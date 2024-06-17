@@ -1,0 +1,28 @@
+{
+  "extends": [
+    "stylelint-config-standard-scss",
+    "stylelint-config-prettier-scss"
+  ],
+  "plugins": ["stylelint-prettier"],
+  "rules": {
+    "custom-media-pattern": null,
+    "selector-class-pattern": [
+      "^_?[$]?[a-z][a-z0-9]*([A-Z][a-z0-9]*)*(_{1,2}[$]?[a-z0-9]+([A-Z][a-z0-9]*)*)*$",
+      {
+        "resolveNestedSelectors": true
+      }
+    ],
+    "scss/at-rule-no-unknown": [
+      true,
+      {
+        "ignoreAtRules": "util"
+      }
+    ],
+    "scss/dollar-variable-empty-line-before": null,
+    "scss/no-global-function-names": null
+  },
+  "maxWarnings": 10,
+  "reportDescriptionlessDisables": null,
+  "reportInvalidScopeDisables": true,
+  "reportNeedlessDisables": true
+}
