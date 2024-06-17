@@ -1,0 +1,20 @@
+{
+  "name": "ith-clicker_game",
+  "version": "1.0.0",
+  "description": "ITHub JS course part II",
+  "homepage": "https://github.com/alexey-ryabkov/ith-clicker_game#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/alexey-ryabkov/ith-clicker_game.git"
+  },
+  "main": "",
+  "engines": {
+    "node": ">=18.12.0 <21.0.0"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "Alexey Ryabkov <xelaris@ya.com>",
+  "license": "ISC"
+}
