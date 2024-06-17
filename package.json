@@ -18,6 +18,7 @@
   "author": "Alexey Ryabkov <xelaris@ya.com>",
   "license": "ISC",
   "devDependencies": {
+    "@prettier/plugin-pug": "3.0.0",
     "autoprefixer": "10.4.19",
     "clean-webpack-plugin": "4.0.0",
     "css-minimizer-webpack-plugin": "7.0.0",
@@ -36,6 +37,8 @@
     "postcss-short": "5.0.0",
     "postcss-utilities": "0.8.4",
     "prettier": "3.3.2",
+    "pug": "3.0.3",
+    "pug-plugin": "5.3.0",
     "stylelint": "16.6.1",
     "stylelint-config-prettier-scss": "1.0.0",
     "stylelint-config-standard": "36.0.0",
