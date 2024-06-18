@@ -1,0 +1,18 @@
+doctype html
+html(lang='ru')
+  head
+    title Главная страница
+    meta(charset='utf-8')/
+    meta(name='viewport' content='width=device-width, initial-scale=1, maximum-scale=1')/
+    meta(name='theme-color' content='#3a6d70')/
+    link(rel='shortcut icon' type='image/png' href='data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAIAAADYYG7QAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAF1JREFUeNrs0TENgDAURdEWMd27MOCgSiqjew0gAAE4QFs1kHwShnMFvJzk5VJbimiOHrKzpZ8FBAQEBAQEBAQEBAT0bfm8j5Ch69ldBgQEBAQEBAQEBAQE9L4lwABcvgWGe23wIgAAAABJRU5ErkJggg==')/
+    link(rel='stylesheet' href='./main.scss')/
+    //- Не прописываем тэг Link для styles.css напрямую, чтобы избежать обработки PugPlugin-ом
+    //- script.
+    //-     const link = document.createElement("link");
+    //-     link.rel = "stylesheet";
+    //-     link.href = "styles.css";
+    //-     document.head.appendChild(link);
+  body
+    h1 Главная страница
+    script(type='text/javascript' src='./main.js')
