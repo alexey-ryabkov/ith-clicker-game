@@ -2,24 +2,25 @@ const path = require("path");
 // const { merge } = require("webpack-merge");
 const pug = require("pug");
 const PugPlugin = require("pug-plugin");
-const MiniCssExtractPlugin = require("mini-css-extract-plugin");
-const CssMinimizerPlugin = require('css-minimizer-webpack-plugin');
+const CssMinimizerPlugin = require("css-minimizer-webpack-plugin");
+const TerserPlugin = require("terser-webpack-plugin");
+const { CleanWebpackPlugin } = require("clean-webpack-plugin");
 
+const pugData = {
+  srcPath: path.resolve(__dirname, "./src"),
+  self: pug,
+};
 const commonConfig = {
-  // entry: "./src/index.js",
-  output: {
-    path: path.resolve(__dirname, "./dist"),
-  },
-  resolve: {
-    extensions: [".js"],
-    alias: {},
-    plugins: [],
-  },
+  mode: "development",
   module: {
     rules: [
       {
-        test: /\.pcss$/,
-        use: [MiniCssExtractPlugin.loader, "postcss-loader"],
+        test: /\.js$/,
+        loader: "babel-loader",
+      },
+      {
+        test: /\.(p|s)?css$/,
+        use: ["css-loader", "postcss-loader"],
       },
       {
         test: /\.(png|jpe?g|gif|webp|svg)$/i,
@@ -28,39 +29,49 @@ const commonConfig = {
     ],
   },
   plugins: [
+    new CleanWebpackPlugin(),
     new PugPlugin({
       pretty: "auto",
       entry: {
-        import: "./src/index.pug",
-        data: {
-          srcPath: path.resolve(__dirname, "./src"),
-          self: pug,
+        main: {
+          import: "./src/pages/main/index.pug",
+          data: pugData,
+          filename: "index.html",
         },
-        filename: "./dist/index.html",
+        stats: {
+          import: "./src/pages/stats/index.pug",
+          data: pugData,
+          filename: "[name]/index.html",
+        },
+        game: {
+          import: "./src/pages/game/index.pug",
+          data: pugData,
+          filename: "[name]/index.html",
+        },
       },
       js: {
-        filename: `./dist/[name].js`,
+        filename: ({ chunk: { name } }) =>
+          name !== "main" ? "[name]/scripts.js" : "scripts.js",
       },
       css: {
-        filename: `./dist/[name].css`,
+        filename: ({ chunk: { name } }) =>
+          name !== "main" ? "[name]/styles.css" : "styles.css",
       },
       minify: true,
     }),
-    // new MiniCssExtractPlugin({
-    //   filename: (pathData) => {
-    //     const { filenameTemplate: filename = '' } = pathData?.chunk ?? {};
-    //     return filename.includes('common')
-    //       ? 'styles-common.css'
-    //       : `modules/${moduleCode}-test/styles.css`;
-    //   },
-    // }),
   ],
   optimization: {
     minimize: true,
     minimizer: [
-      new TerserPlugin({ extractComments: false }),
+      new TerserPlugin({ extractComments: true }),
       new CssMinimizerPlugin(),
     ],
+  },
+  resolve: {
+    alias: {
+      "@": path.resolve(__dirname, "src"),
+    },
+    extensions: [".pug", ".js", ".css", ".pcss", ".scss"],
   },
 };
 module.exports = commonConfig;
