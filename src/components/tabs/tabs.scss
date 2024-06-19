@@ -1,0 +1,60 @@
+$max-tabs-cnt: 5;
+
+.tabs {
+  &__nav {
+    display: flex;
+    gap: 24px;
+    width: 100%;
+    overflow: hidden;
+  
+    @media (--layout-mf-md) {
+      gap: 40px;
+    }
+  }
+
+  &__content {
+    display: none;
+  }
+
+  &__tabControl[class~='&__tabControl_allTabs']:checked ~ &__content {
+    display: block;
+  }
+
+  &__tabControl {
+    @util hide-visually;
+  }
+
+  &__tabTitle {
+    color: var(--text-pale-color, $grey-3);
+    display: inline-block;
+    border-bottom: 5px solid transparent;
+    padding-bottom: 8px;
+    
+    @include text-interactive;
+    @include font-def; 
+  
+    &:hover {
+      color: var(--text-primary-color, $grey-4);
+    }    
+  }
+
+  &__tabControl[class~='tabs__tabControl_allTabs']:checked
+    ~ &__nav &__tabTitle[class~='tabs__tabTitle_allTabs'] {
+      color: var(--text-primary-color, $black);
+      border-bottom-color: var(--text-primary-color, $black);
+      cursor: default;
+  }
+
+  @for $num from 1 through $max-tabs-cnt {
+    &__tabControl[class~='tabs__tabControl_tabNum_#{$num}']:checked
+    ~ &__content[class~='tabs__content_tabNum_#{$num}'] {
+      display: block;
+    }
+    &__tabControl[class~='tabs__tabControl_tabNum_#{$num}']:checked
+    ~ &__nav &__tabTitle[class~='tabs__tabTitle_tabNum_#{$num}'] {
+      color: var(--text-primary-color, $black);
+      border-bottom-color: var(--text-primary-color, $black);
+      cursor: default; 
+    }
+  }
+}

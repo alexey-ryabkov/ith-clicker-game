@@ -1,18 +1,26 @@
-doctype html
-html(lang='ru')
-  head
-    title Главная страница
-    meta(charset='utf-8')/
-    meta(name='viewport' content='width=device-width, initial-scale=1, maximum-scale=1')/
-    meta(name='theme-color' content='#3a6d70')/
-    link(rel='shortcut icon' type='image/png' href='data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAIAAADYYG7QAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAF1JREFUeNrs0TENgDAURdEWMd27MOCgSiqjew0gAAE4QFs1kHwShnMFvJzk5VJbimiOHrKzpZ8FBAQEBAQEBAQEBAT0bfm8j5Ch69ldBgQEBAQEBAQEBAQE9L4lwABcvgWGe23wIgAAAABJRU5ErkJggg==')/
-    link(rel='stylesheet' href='./main.scss')/
-    //- Не прописываем тэг Link для styles.css напрямую, чтобы избежать обработки PugPlugin-ом
-    //- script.
-    //-     const link = document.createElement("link");
-    //-     link.rel = "stylesheet";
-    //-     link.href = "styles.css";
-    //-     document.head.appendChild(link);
-  body
-    h1 Главная страница
-    script(type='text/javascript' src='./main.js')
+include ../../layouts/baseLayout/index
+include ../../components/carousel/index
++baseLayout('main')
+  +carousel([
+    {
+      title: 'Про игру в целом',
+      content: 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Eveniet provident impedit accusantium esse ex dignissimos tempore voluptatibus optio animi inventore quo minus, officiis omnis nesciunt sed. Inventore magni maxime aut?',
+      image: {
+        src: 'https://images.unsplash.com/photo-1677247191557-4abd28b7c387?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1031&q=80',
+      }
+    },
+    {
+      title: 'Про хорошие монетки',
+      content: 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Eveniet provident impedit accusantium esse ex dignissimos tempore voluptatibus optio animi inventore quo minus, officiis omnis nesciunt sed. Inventore magni maxime aut?',
+      image: {
+        src: 'https://images.unsplash.com/photo-1672243775941-10d763d9adef?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80',
+      }
+    },
+    {
+      title: 'Про плохие монетки',
+      content: 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Eveniet provident impedit accusantium esse ex dignissimos tempore voluptatibus optio animi inventore quo minus, officiis omnis nesciunt sed. Inventore magni maxime aut?',
+      image: {
+        src: 'https://images.unsplash.com/photo-1677241817906-a84211b4f627?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=435&q=80',
+      }
+    }
+  ])

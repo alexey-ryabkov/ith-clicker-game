@@ -1,1 +1,1 @@
-console.log("I am main!");
+import "../../components/carousel";

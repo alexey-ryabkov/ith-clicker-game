@@ -1,4 +1,8 @@
-@import '../../vars.scss';
+@import '../../css/vars.scss';
+@import '../../css/mixins.scss';
+@import '../../css/main.scss';
+@import '../../layouts/baseLayout/baseLayout.scss';
+@import '../../components/tabs/tabs.scss';
 
 h1 {
   color: $blue;

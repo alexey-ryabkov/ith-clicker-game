@@ -1,0 +1,17 @@
+mixin carousel(slides = [])
+  .carousel
+    .carousel__container
+      .button.carousel__button.carousel__button_prev назад
+      .carousel__slidesContainer
+        each slide, num in slides
+          - const { image: { src = '',  alt = '' } = {}, title, desc = '' } = slide;
+          div(class=['carousel__slide', {'carousel__slide_active': num === 0}])
+            if src
+              img.carousel__slideImg(src=src alt=(alt || title))/
+            h5= title
+            if desc
+              p= desc
+      .button.carousel__button.carousel__button_next вперед
+    .carousel__nav
+      each slide, num in slides
+        .button.carousel__navBtn(title=slide.title)= num

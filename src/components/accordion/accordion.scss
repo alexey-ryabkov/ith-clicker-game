@@ -1,0 +1,60 @@
+.accordion {
+  @include font-def;
+
+  &_compact {
+    font-size: 9px;
+
+    @media (--layout-mf-sm) {
+      font-size: 11px;
+    }
+    @media (--layout-mf-md) {
+      font-size: 12px;
+    }
+    @media (--layout-mf-xl) {
+      font-size: 13px;
+    }
+  }
+
+  &_fullWidth {
+    width: 100%;
+  }
+
+  &__item {
+    border: 1px solid var(--content-border-color, $grey-3);
+    background: var(--content-bg-color, white);
+    border-radius: .5em;
+  
+    &:not(:last-child) {
+      margin-bottom: .5em;
+    }
+  }
+
+  &__itemSummary {
+    padding: 1.5em 2em;
+    color: var(--text-contrast-color, $black);
+  
+    @include text-interactive;
+    @include box-aligning(.63em);
+  }
+
+  &__item[open] &__itemSummary {
+    padding-bottom: 1em;
+  }
+
+  &__itemSummaryMarker {
+    display: inline-block;
+    color: var(--text-regular-color, $grey-4);
+    flex-shrink: 0;
+    size: 1em .5em;
+  }
+
+  &__item[open] &__itemSummaryMarker {
+    transform: rotate(180deg);
+  }
+
+  &__itemDetails {
+    margin: 0;
+    padding: 0 2em 2em;
+    color: var(--text-regular-color, $grey-4);
+  }
+}
