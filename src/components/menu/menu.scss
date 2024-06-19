@@ -1,0 +1,10 @@
+.menu {
+  &__item {
+    &_active,
+    &:hover {
+      font-weight: bold;
+      text-decoration: none;
+      cursor: default;
+    }
+  }
+}

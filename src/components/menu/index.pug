@@ -1,0 +1,5 @@
+mixin menu(items, activeItem = '')
+  nav.menu
+    each item in items
+      - const { name, title, link = '#'} = item;
+      a(href=link class=['menu__item', {'menu__item_active': name == activeItem}])= title
