@@ -5,11 +5,31 @@ const PugPlugin = require("pug-plugin");
 const CssMinimizerPlugin = require("css-minimizer-webpack-plugin");
 const TerserPlugin = require("terser-webpack-plugin");
 const { CleanWebpackPlugin } = require("clean-webpack-plugin");
+const pages = require("./src/pages");
 
-const pugData = {
-  srcPath: path.resolve(__dirname, "./src"),
-  self: pug,
+const srcPath = path.resolve(__dirname, "./src");
+const entryParams = {
+  filename: "[name]/index.html",
+  data: {
+    pug,
+    srcPath,
+    render: (path, options = {}) =>
+      pug.renderFile(`${srcPath}/${path}`, options),
+    pages,
+  },
 };
+const entry = pages.reduce((result, page) => {
+  const { name } = page;
+  let { filename, data } = entryParams;
+  name === "main" && (filename = "index.html");
+  result[name] = {
+    import: `./src/pages/${name}/index.pug`,
+    filename,
+    data,
+  };
+  return result;
+}, {});
+
 const commonConfig = {
   mode: "development",
   module: {
@@ -32,23 +52,7 @@ const commonConfig = {
     new CleanWebpackPlugin(),
     new PugPlugin({
       pretty: "auto",
-      entry: {
-        main: {
-          import: "./src/pages/main/index.pug",
-          data: pugData,
-          filename: "index.html",
-        },
-        stats: {
-          import: "./src/pages/stats/index.pug",
-          data: pugData,
-          filename: "[name]/index.html",
-        },
-        game: {
-          import: "./src/pages/game/index.pug",
-          data: pugData,
-          filename: "[name]/index.html",
-        },
-      },
+      entry,
       js: {
         filename: ({ chunk: { name } }) =>
           name !== "main" ? "[name]/scripts.js" : "scripts.js",
@@ -57,13 +61,13 @@ const commonConfig = {
         filename: ({ chunk: { name } }) =>
           name !== "main" ? "[name]/styles.css" : "styles.css",
       },
-      minify: true,
+      minify: false,
     }),
   ],
   optimization: {
-    minimize: true,
+    minimize: false,
     minimizer: [
-      new TerserPlugin({ extractComments: true }),
+      new TerserPlugin({ extractComments: false }),
       new CssMinimizerPlugin(),
     ],
   },
