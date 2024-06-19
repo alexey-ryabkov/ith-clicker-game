@@ -6,6 +6,7 @@ module.exports = {
     require("postcss-nested"),
     require("postcss-utilities"),
     require("postcss-short"),
+    require("postcss-map-get"),
     require("postcss-preset-env")({
       features: {
         "nesting-rules": false,

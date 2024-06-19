@@ -1,0 +1,94 @@
+@mixin font($size: false, $line-height: false, $weight: false, $family: false, $letter-spacing: false) {
+  @if $size {
+    font-size: $size;
+  } 
+  @if $line-height {
+    line-height: $line-height;
+  } 
+  @if $weight {
+    font-weight: $weight;
+  } 
+  @if $family {
+    font-family: $family;
+  } 
+  @if $letter-spacing {
+    letter-spacing: $letter-spacing;
+  }
+}
+@mixin font-def { 
+  @include font($font-size-def, $line-height-def);
+}
+@mixin text-interactive {
+  cursor: pointer;
+  user-select: none;
+}
+@mixin reset-geometry($zeroFont: false) {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  
+  @if $zeroFont {
+    font-size: 0;
+  }
+}
+@mixin circled($radius: false) {
+  @if $radius {
+    @util circle($radius, initial);
+  }
+}
+@mixin img-cover {
+  object-fit: cover;
+  size: 100%;
+}
+@mixin box-covering($position: false, $z-index: false) {  
+  inset: 0;
+
+  @if $position {
+    position: $position;
+  } @else {
+    position: absolute;
+  }
+  @if $z-index {
+    z-index: $z-index;
+  }
+}
+@mixin box-centering {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+@mixin box-aligning($gap: false) {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  @if $gap {
+    gap: $gap;
+  }
+}
+@mixin box-stack($gap: false, $align: false) {
+  display: flex;
+  flex-direction: column;
+
+  @if $gap {
+    gap: $gap;
+  }
+  @if $align {
+    align-items: $align;
+  }  
+}
+@mixin axis-centered($axis: false) {
+  position: absolute;
+
+  @if $axis == vertical {
+    top: 50%;
+    transform: translateY(-50%);
+  } @else {
+    @if $axis == horizontal {
+      left: 50%;
+      transform: translateX(-50%);
+    } @else {
+      @util center;
+    }
+  }  
+}

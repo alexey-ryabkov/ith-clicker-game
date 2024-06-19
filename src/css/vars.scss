@@ -1,0 +1,51 @@
+$white: #fff;
+$black: #212429;
+$pink: #f784ad;
+$purple: #7048e8;
+$blue: #4263eb;
+/* $blue-darker: darken($blue, 15%);  */
+$blue-darker: $blue; 
+/* $purple-darker: darken($purple, 15%);  */
+$purple-darker: $purple; 
+$blue-light: #a0b1f533;
+$red: #f03d3e;
+$orange: #d84910;
+$grey-0: #f9fafc;
+$grey-1: #f8f9fa;
+$grey-2: #dde2e5;
+$grey-3: #acb5bd;
+$grey-4: #495057;
+/* $grey-4-lighter: lighten($grey-4, 12%); */
+$grey-4-lighter: $grey-4;
+
+$color-error: $red;
+$color-success: $blue;
+$color-notify: $orange;
+$color-primary: $blue;
+$color-secondary: $purple;
+$color-alternate: $orange; 
+$color-primary-active: $blue-darker;
+$color-secondary-active: $purple-darker;
+
+$font-size-def: 16px;
+$font-weights: (
+  thin: 100, 
+  light: 200, 
+  regular: 400, 
+  medium: 500, 
+  semibold: 600, 
+  bold: 900
+);
+$font-weight-def: map-get($font-weights, regular);
+$font-weight-bolder: map-get($font-weights, medium);
+$font-weight-bold: map-get($font-weights, semibold);
+$font-family-def: 'Inter', sans-serif;
+$line-height-def: 1.5;
+
+$layout-breakpoints: (
+  min: 375px,
+  sm: 576px,
+  md: 768px,
+  lg: 992px,
+  xl: 1175px
+);
