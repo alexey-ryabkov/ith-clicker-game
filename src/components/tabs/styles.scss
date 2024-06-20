@@ -1,0 +1,42 @@
+$max-tabs-cnt: 5;
+
+.tabs {
+  &__nav {
+    display: flex;
+    gap: 24px;
+    width: 100%;
+    overflow: hidden;
+  
+    @media (--layout-mf-md) {
+      gap: 40px;
+    }
+  }
+
+  &__tabTitle {
+    color: var(--text-pale-color, $grey-3);
+    display: inline-block;
+    border-bottom: 5px solid transparent;
+    padding-bottom: 8px;
+    
+    @include text-interactive;
+    @include font-def; 
+  
+    &:hover {
+      color: var(--text-primary-color, $grey-4);
+    }    
+  }
+
+  &__tab_active &__tabTitle {
+    color: var(--text-primary-color, $black);
+    border-bottom-color: var(--text-primary-color, $black);
+    cursor: default; 
+  }
+
+  &__content {
+    display: none;
+
+    &_opened {
+      display: block;
+    }
+  }
+}
