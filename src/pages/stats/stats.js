@@ -1,2 +1,1 @@
-import "../../components/accordion";
-console.log("I am stats!");
+// import "../../components/accordion";

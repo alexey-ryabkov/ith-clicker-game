@@ -1,0 +1,8 @@
+mixin accordion(items = [], numActive = 0)
+  .accordion
+    each item, num in items 
+      - const { label, content } = item;
+      details.accordion__item(open=(num === numActive))
+        summary.accordion__itemSummary
+          = label
+        p.accordion__itemDetails= content 
