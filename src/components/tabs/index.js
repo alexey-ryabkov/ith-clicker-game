@@ -1,30 +1,29 @@
+import { toggleClsInList } from "@utils-kit";
+
 document.addEventListener("DOMContentLoaded", () => {
   document.body.querySelectorAll(".tabs").forEach((tabs) => {
-    const tabItems = tabs.querySelectorAll(".tabs__tab");
-    console.log(tabItems);
+    /**
+     * @type HTMLElement[]
+     */
+    const tabItems = Array.from(tabs.querySelectorAll(".tabs__tab") ?? []);
+    // console.log(tabItems);
 
     tabItems.forEach((tab) => {
       tab.addEventListener("click", (e) => {
         e.preventDefault();
 
-        let activeNum = 0;
-        const choosedTab = /** @type {Element} */ (e.currentTarget);
+        const choosedTab = /** @type {HTMLElement} */ (e.currentTarget);
+        const activeNum = tabItems.indexOf(choosedTab);
 
-        tabItems.forEach((tab, num) => {
-          if (tab !== choosedTab) {
-            tab.classList.remove("tabs__tab_active");
-          } else {
-            tab.classList.add("tabs__tab_active");
-            activeNum = num;
-          }
-        });
-        document.querySelectorAll(".tabs__content").forEach((content, num) => {
-          if (num !== activeNum) {
-            content.classList.remove("tabs__content_opened");
-          } else {
-            content.classList.add("tabs__content_opened");
-          }
-        });
+        /**
+         * @type HTMLElement[]
+         */
+        const tabsContents = Array.from(
+          tabs.querySelectorAll(".tabs__content") ?? [],
+        );
+
+        toggleClsInList(tabItems, choosedTab, "tabs__tab_active");
+        toggleClsInList(tabsContents, activeNum, "tabs__content_opened");
       });
     });
   });
