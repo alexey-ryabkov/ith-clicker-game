@@ -1,2 +1,2 @@
-import "../../game";
-import "../../components/tabs";
+import "@game";
+import "@components/tabs";

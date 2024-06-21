@@ -1,1 +1,1 @@
-import "../../components/carousel";
+import "@components/carousel";

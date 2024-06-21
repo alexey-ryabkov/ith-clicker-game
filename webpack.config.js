@@ -16,6 +16,7 @@ const entryParams = {
     render: (path, options = {}) =>
       pug.renderFile(`${srcPath}/${path}`, options),
     pages,
+    log: (msg) => console.log(msg),
   },
 };
 const entry = pages.reduce((result, page) => {
@@ -32,6 +33,9 @@ const entry = pages.reduce((result, page) => {
 
 const commonConfig = {
   mode: "development",
+  output: {
+    path: path.resolve(__dirname, "./dist"),
+  },
   module: {
     rules: [
       {
@@ -73,7 +77,10 @@ const commonConfig = {
   },
   resolve: {
     alias: {
-      "@": path.resolve(__dirname, "src"),
+      "@components": path.resolve(__dirname, "src/components"),
+      "@game": path.resolve(__dirname, "src/game"),
+      "@utils-kit": path.resolve(__dirname, "src/utils/index.js"),
+      "@utils": path.resolve(__dirname, "src/utils"),
     },
     extensions: [".pug", ".js", ".css", ".pcss", ".scss"],
   },

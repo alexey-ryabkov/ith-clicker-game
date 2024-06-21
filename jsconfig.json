@@ -1,15 +1,22 @@
 {
-	"compilerOptions": {
-		"allowJs": true,
-		"checkJs": true,
-		"esModuleInterop": true,
-		"forceConsistentCasingInFileNames": true,
-		"resolveJsonModule": true,
-		"skipLibCheck": true,
-		"sourceMap": true,
-		"strict": true
-	},
-	"include": [
-    "src/**/*",
-  ], 
+  "compilerOptions": {
+    "allowJs": true,
+    "checkJs": true,
+    "esModuleInterop": true,
+    "forceConsistentCasingInFileNames": true,
+    "resolveJsonModule": true,
+    "skipLibCheck": true,
+    "sourceMap": true,
+    "strict": true,
+    "baseUrl": "./src",
+    "paths": {
+			"@components/*": ["components/*"],
+      "@game/*": ["game/*"],
+      "@utils-kit": ["utils"],
+      "@utils/*": ["utils/*"]
+    }
+  },
+  "include": [
+    "src/**/*"
+  ]
 }
