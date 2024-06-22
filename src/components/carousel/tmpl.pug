@@ -1,0 +1,23 @@
+mixin carousel(slides = [], numActive = 0)
+  - const slidesCnt = slides.length;
+  if slidesCnt
+    .carousel
+      .carousel__container
+        if slidesCnt > 1
+          a.carousel__navBtn.carousel__navBtn_prev(href='#' title=назад) &#5171;
+        .carousel__slidesContainer
+          each slide, num in slides
+            - const { image: { src = '',  alt = '' } = {}, title, desc = '' } = slide;
+            div(class=['carousel__slide', {'carousel__slide_active': num === numActive}])
+              if src
+                .carousel__slideImg
+                  img.carousel__img(src=src alt=(alt || title))/
+              h2= title
+              if desc
+                p= desc
+        if slidesCnt > 1
+          a.carousel__navBtn.carousel__navBtn_next(href='#' title=вперед) &#5171;
+      if slidesCnt > 1    
+        .carousel__pager
+          each slide, num in slides
+            a(class=['carousel__page', {'carousel__page_active': num === numActive}] href='#' title=`#${num+1} ${slide.title}`)

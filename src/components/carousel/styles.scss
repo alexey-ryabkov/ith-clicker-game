@@ -1,0 +1,85 @@
+.carousel {
+  width: 100%;
+  box-sizing: border-box;
+  padding: * 2em;
+
+  @include box-stack(0.5em, center);
+
+  &__container {
+    width: 100%;
+
+    @include box-aligning(2em);
+  }
+
+  &__navBtn {
+    font-size: 3em;
+    font-weight: bold;
+    opacity: 0.5;
+    text-decoration: none;
+
+    @include text-interactive;
+
+    &:hover {
+      opacity: 1;
+    }
+
+    &_prev {
+      transform: rotate(180deg);
+    }
+  }
+
+  &__slidesContainer {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    overflow: clip *;
+  }
+
+  &__slide {
+    min-width: 100%;
+
+    @include box-stack(0, center);
+
+    &_active {
+      transition: margin 1s;
+    }
+  }
+
+  &__slideImg {
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    overflow: hidden;
+  }
+
+  &__img {
+    @include img-cover;
+  }
+
+  &__nav {
+    display: none;
+  }
+
+  &__pager {
+    display: flex;
+    align-items: center;
+    gap: 0.5em;
+  }
+
+  &__page {
+    font-size: 1.5em;
+    font-weight: bold;
+    text-decoration: none;
+
+    @include text-interactive;
+
+    &::before {
+      content: '\25ef';
+    }
+
+    &_active {
+      &::before {
+        content: '\25ce';
+      }
+    }
+  }
+}
