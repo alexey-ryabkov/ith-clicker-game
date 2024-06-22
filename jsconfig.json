@@ -10,13 +10,17 @@
     "strict": true,
     "baseUrl": "./src",
     "paths": {
-			"@components/*": ["components/*"],
-      "@game/*": ["game/*"],
+      "@components/*": ["components/*"],
+      "@lib": ["lib/*"],
       "@utils-kit": ["utils"],
-      "@utils/*": ["utils/*"]
+      "@utils/*": ["utils/*"],
+      "@app/*": ["app/*"],
+      "@game/*": ["app/game/*"]
     }
   },
   "include": [
-    "src/**/*"
+    "src/**/*",
+    "tools",
+    "webpack.config.js"
   ]
 }

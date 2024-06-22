@@ -1,5 +1,5 @@
+import RangeKeeper from "@lib/RangeKeeper";
 import { toggleClsInList } from "@utils-kit";
-import RangeKeeper from "@utils/RangeKeeper";
 
 document.addEventListener("DOMContentLoaded", () => {
   document.body.querySelectorAll(".carousel").forEach((carousel) => {
