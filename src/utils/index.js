@@ -16,7 +16,6 @@ export function toggleClsInList(list, toggled, cls) {
     }
   });
 }
-
 /**
  * @typedef {[string, string, string]} NumeralItemVariants
  */
@@ -46,7 +45,6 @@ export function formatNumeralItem(number, variants) {
   }
   return result;
 }
-
 /**
  * @param {number} ms
  * @returns {string}
@@ -60,4 +58,16 @@ export function formatTime(ms) {
   const time = new Date(ms + offset).toLocaleTimeString();
 
   return time.replace(/^(00:)?/, "");
+}
+/**
+ * @param {unknown} value
+ * @returns {boolean}
+ */
+export function isPlainObject(value) {
+  return (
+    typeof value === "object" &&
+    value !== null &&
+    value.constructor === Object &&
+    Object.prototype.toString.call(value) === "[object Object]"
+  );
 }

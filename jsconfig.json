@@ -11,16 +11,12 @@
     "baseUrl": "./src",
     "paths": {
       "@components/*": ["components/*"],
-      "@lib": ["lib/*"],
+      "@lib/*": ["lib/*"],
       "@utils-kit": ["utils"],
       "@utils/*": ["utils/*"],
       "@app/*": ["app/*"],
       "@game/*": ["app/game/*"]
     }
   },
-  "include": [
-    "src/**/*",
-    "tools",
-    "webpack.config.js"
-  ]
+  "include": ["src/**/*", "tools", "webpack.config.js"]
 }

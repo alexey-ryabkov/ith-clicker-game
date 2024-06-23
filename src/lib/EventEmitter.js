@@ -1,22 +1,21 @@
-export default class EventEmitter {
-  /**
-   * @callback EventHandler
-   * @param {...any} args
-   * @return {void}
-   *
-   * @typedef {Object.<string, EventHandler[]>} Events
-   */
+import "@lib/types";
 
+export default class EventEmitter {
   /**
    * @type Events
    */
   events = {};
+  /**
+   * @type string[]
+   */
+  _availiableEvents = [];
 
   /**
    * @param {string} event
    * @param {EventHandler} listener
    */
   on(event, listener) {
+    if (!this._checkEvent(event)) throw new Error(`Unknown event ${event}`);
     if (!this.events[event]) {
       this.events[event] = [];
     }
@@ -28,6 +27,7 @@ export default class EventEmitter {
    * @param {...any} args
    */
   emit(event, ...args) {
+    if (!this._checkEvent(event)) throw new Error(`Unknown event ${event}`);
     if (this.events[event]) {
       this.events[event].forEach((listener) => {
         listener(...args);
@@ -43,5 +43,14 @@ export default class EventEmitter {
     if (this.events[event]) {
       this.events[event] = this.events[event].filter((l) => l !== listener);
     }
+  }
+
+  /**
+   * @param {string} event
+   */
+  _checkEvent(event) {
+    return (
+      !this._availiableEvents.length || this._availiableEvents.includes(event)
+    );
   }
 }
