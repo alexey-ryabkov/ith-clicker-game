@@ -1,0 +1,11 @@
+mixin table(header = {}, data = [], cls = [])
+  table(class=['table', ...cls])
+    thead
+      tr.table__row.table__row_header
+        each name, col in header
+          td.table__cell= name
+    tbody    
+      each row in data
+        tr.table__row
+          each name, col in header
+            td.table__cell= row[col]

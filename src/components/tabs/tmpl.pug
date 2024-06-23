@@ -6,6 +6,6 @@ mixin tabs(items = [], numActive = 0)
         span(class=['tabs__tab', { 'tabs__tab_active': num ===  numActive}])
           span.tabs__tabTitle= label
     each item, num in items
-      .tabs__content(class=['tabs__content', { 'tabs__content_opened': num ===  numActive}])
+      div(class=['tabs__content', { 'tabs__content_opened': num ===  numActive}]) 
         - const { content } = item;
         != content

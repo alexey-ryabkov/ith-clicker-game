@@ -1,0 +1,2 @@
+mixin button(text = 'ок', cls = [], type = 'primary', disabled = false)
+  button(class=['button', `button_var_${type}`, ...cls], disabled = disabled)= text

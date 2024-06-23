@@ -1,0 +1,6 @@
+mixin radio(name, value, title = '', cls = [], checked = false, disabled = false)
+  label.radio
+    input.radio__input(type="radio", name=name, value=value, checked=checked, disabled=disabled)/
+    span.radio__state
+      span.radio__control
+      span.radio__title= title || value

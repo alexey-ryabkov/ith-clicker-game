@@ -1,0 +1,32 @@
+.textInput {
+  border: 1px solid var(--control-border-color, $grey-2);
+  border-radius: .4em;
+  color: var(--text-contrast-color, $grey-4) transparent;
+  padding: .85em 2.4em .65em 1.2em;
+  outline: none;
+  box-sizing: border-box;
+  transition: border-color .3s;
+
+  @include font(1.25em, 1.3em);
+
+  &::placeholder {
+    color: var(--text-mute-color, $grey-2);
+  }
+
+  &:disabled {
+    color: var(--control-disabled-color, #59616a) var(--control-disabled-bg-color, $grey-1);
+    border-color: var(--control-disabled-border-color, $grey-2);
+  }
+
+  &:focus {
+    border-color: var(--control-checked-color, $blue);
+  }
+
+  &_compact {
+    padding: .5em 2.4em .4em 1.2em;
+  }
+
+  &_fullWidth {
+    width: 100%;
+  }
+}

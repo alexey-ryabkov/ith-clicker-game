@@ -4,7 +4,7 @@ import { toggleClsInList } from "@utils-kit";
 document.addEventListener("DOMContentLoaded", () => {
   document.body.querySelectorAll(".carousel").forEach((carousel) => {
     /**
-     * @type {HTMLElement[]}
+     * @type HTMLElement[]
      */
     const slides = Array.from(
       carousel.querySelectorAll(".carousel__slide") ?? [],
@@ -13,13 +13,13 @@ document.addEventListener("DOMContentLoaded", () => {
     const { length: slidesCnt } = slides;
     if (slidesCnt > 1) {
       const activeSlideNum = new RangeKeeper(slidesCnt - 1);
-      activeSlideNum.on("changed", (slideNum) => {
+      activeSlideNum.on("changed", (/** @type {number} */ slideNum) => {
         setSlide(slideNum);
         setPage(slideNum);
       });
 
       /**
-       * @type {HTMLElement[]}
+       * @type HTMLElement[]
        */
       const pages = Array.from(
         carousel.querySelectorAll(".carousel__page") ?? [],

@@ -1,0 +1,70 @@
+$validity-status-colors: (
+  error: $color-error, 
+  success: $color-success
+);
+
+.formField {
+  font-size: 16px;
+
+  @include box-stack(.31em, flex-start);
+  
+  &__title {
+    display: inline-block;
+    color: $grey-3;
+    text-transform: uppercase;
+  
+    @include text-interactive;
+    @include font(.75em, 1.13, $font-weight-bolder, false, .03em);
+  }
+
+  &__title:has(+ &__field &__control:disabled) {
+    cursor: default;
+  }
+
+  &__field {
+    position: relative;
+
+    &_fullWidth {
+      width: 100%;
+    }
+  }
+
+  &__icon {
+    display: none;
+    transform: translateY(-50%);
+    position: absolute 50% 1em * *;
+    size: 1.5em;
+  }
+
+  @each $color $name in $validity-status-colors {
+    &_validity_$name &__icon_$name {
+      display: inline-block;
+      color: $color;
+    }
+  }
+
+  &__status {
+    @include font(.75rem, 1.2, $font-weight-bolder);
+
+    &:empty {
+      display: node;
+    }
+  }
+
+  @each $color $name in $validity-status-colors {
+    &_validity_$name &__status { 
+      color: $color;
+    }
+  }
+  
+  &_disabled &__status {
+    color: var(--text-mute-color, $grey-2)
+  }
+
+  @each $color $name in $validity-status-colors {
+    &_validity_$name &__control_type_textInput,
+    &_validity_$name &__control_type_textInput:focus {
+      border-color: $color;
+    }
+  }
+}

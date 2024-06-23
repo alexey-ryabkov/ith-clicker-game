@@ -1,0 +1,13 @@
+//- include ../svgIcon/tmpl
+mixin formField(label, fieldData, cls = [], note = '')
+  - const { name = '', disabled = false} = fieldData ?? {};
+  div(class=['formField', {'formField_disabled': disabled}, ...cls])
+    if label
+      label.formField__title(for=name)= label
+    .formField__field
+      block
+      //- +svgIcon(['formField__icon', 'formField__icon_success'], 'warning')
+      //- +svgIcon(['formField__icon', 'formField__icon_error'], 'warning')
+    .formField__status= note
+  
+  
