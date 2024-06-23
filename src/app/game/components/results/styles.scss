@@ -1,0 +1,17 @@
+.gameResults {
+  &__list {
+    display: flex;
+    width: 100%;
+    flex-flow: row wrap;
+  }
+
+  &__listItemName {
+    width: 50%;
+    margin: 0;
+  }
+
+  &__listItemValue {
+    width: 50%;
+    margin: 0;
+  }
+} 

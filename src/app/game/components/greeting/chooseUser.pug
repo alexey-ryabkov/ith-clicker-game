@@ -1,0 +1,13 @@
+include ../../../../components/formField/tmpl
+include ../../../../components/radio/tmpl
+include ../../../../components/button/tmpl
+.gameGreeting__chooseUser
+  - const users = ['user1', 'user2', 'user3'];
+  if users.length
+    +formField('', null)
+      each user in users 
+        +radio('users', user)
+    +button('Выбрать', ['gameGreeting__chooseUserBtn'])
+  else
+    . 
+      Вы пока единственный игрок

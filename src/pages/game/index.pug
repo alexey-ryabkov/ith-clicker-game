@@ -1,13 +1,3 @@
 include ../../layouts/baseLayout/index
-include ../../components/tabs/tmpl
 +baseLayout('game')
-  +tabs([
-    {
-      label: "Новый игрок",
-      content: "поле ввода имени игрока"
-    },
-    {
-      label: "Выбрать игрока",
-      content: "селектор игрока"
-    }
-  ])
+  include ../../app/game/ui

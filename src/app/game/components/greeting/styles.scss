@@ -1,0 +1,17 @@
+@import "../../../../components/tabs/styles.scss";
+@import "../../../../components/button/styles.scss";
+@import "../../../../components/formField/styles.scss";
+@import "../../../../components/textInput/styles.scss";
+@import "../../../../components/radio/styles.scss";
+
+.gameGreeting {
+  &__welcomeUser {
+    &:not(:empty)::before {
+      content: ', ';
+    }
+  }
+
+  &__startBtn {
+    display: none;
+  }
+}

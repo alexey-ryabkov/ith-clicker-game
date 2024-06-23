@@ -1,0 +1,7 @@
+include ../../../../components/button/tmpl
+.gamePlayground
+  .gamePlayground__indicators
+  canvas.gamePlayground__canvas(width='100%' height='100$%')
+    .gamePlayground__indicator.gamePlayground__indicator_time 00:00
+    .gamePlayground__indicator.gamePlayground__indicator_score 0
+  +button('Завершить игру', ['gamePlayground__finishBtn'])

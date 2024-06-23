@@ -1,0 +1,16 @@
+include ../../../../components/table/tmpl
+- 
+  const results = {
+    "Очки": 100,
+    "Время игры": new Date(),
+    "Время в игре": "02:10",
+    "Сделано кликов": 78,
+    "Поймано звезд": 15,
+    "Упущено звезд": 7,
+  };
+.gameResults
+  dl.gameResults__list
+    each value, param in results
+      dt.gameResults__listItemName= param
+      dd.gameResults__listItemValue= value
+  +button('Новая игра', ['gameResults__newGameBtn'])
