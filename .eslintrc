@@ -6,9 +6,11 @@
   "extends": ["standard", "plugin:prettier/recommended"],
   "plugins": ["prettier"],
   "rules": {
-    "prettier/prettier": "warn"
+    "prettier/prettier": "warn",
+    "accessor-pairs": "warn"
   },
   "ignorePatterns": [
-    "**/*b*ck*p*"
+    "**/*b*ck*p*",
+    "dist/**"
   ]
 }

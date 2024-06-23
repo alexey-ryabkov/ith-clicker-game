@@ -12,6 +12,7 @@
         "resolveNestedSelectors": true
       }
     ],
+    "scss/at-import-partial-extension": null,
     "scss/at-rule-no-unknown": [
       true,
       {

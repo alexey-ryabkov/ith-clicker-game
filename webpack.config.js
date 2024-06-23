@@ -23,10 +23,11 @@ const entryParams = {
   import: "",
   filename: "[name]/index.html",
   data: {
-    pug,
-    srcPath,
-    render: (/** @type {string} */ path, options = {}) =>
+    pathResolve: (/** @type {string} */ sPath) => path.resolve(srcPath, sPath),
+    renderTmpl: (/** @type {string} */ path, options = {}) =>
       pug.renderFile(`${srcPath}/${path}`, options, undefined),
+    render: (/** @type {string} */ tmpl, options = {}) =>
+      pug.render(tmpl, options, undefined),
     pages,
     log: (/** @type {string} */ msg) => console.log(msg),
   },
