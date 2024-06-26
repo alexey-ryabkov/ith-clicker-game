@@ -5,4 +5,5 @@ mixin accordion(items = [], numActive = 0)
       details.accordion__item(open=(num === numActive))
         summary.accordion__itemSummary
           = label
-        p.accordion__itemDetails= content 
+        p.accordion__itemDetails
+          != content 

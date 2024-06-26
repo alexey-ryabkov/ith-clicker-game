@@ -13,7 +13,7 @@
   },
   "scripts": {
     "build": "webpack",
-    "start": "webpack serve --open && npm run watch",
+    "dev": "webpack serve",
     "watch": "webpack --watch"
   },
   "keywords": [],

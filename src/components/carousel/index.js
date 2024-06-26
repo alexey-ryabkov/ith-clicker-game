@@ -3,9 +3,7 @@ import { toggleClsInList } from "@utils-kit";
 
 document.addEventListener("DOMContentLoaded", () => {
   document.body.querySelectorAll(".carousel").forEach((carousel) => {
-    /**
-     * @type HTMLElement[]
-     */
+    /** @type HTMLElement[] **/
     const slides = Array.from(
       carousel.querySelectorAll(".carousel__slide") ?? [],
     );
@@ -18,9 +16,7 @@ document.addEventListener("DOMContentLoaded", () => {
         setPage(slideNum);
       });
 
-      /**
-       * @type HTMLElement[]
-       */
+      /** @type HTMLElement[] **/
       const pages = Array.from(
         carousel.querySelectorAll(".carousel__page") ?? [],
       );

@@ -4,21 +4,13 @@ import Game from "@game/Game";
 import "@game/components/greeting";
 import "@game/components/results";
 
-/**
- * @type Game
- */
+/** @type Game **/
 let game;
-/**
- * @type HTMLElement|null
- */
+/** @type HTMLElement|null **/
 let greetingContainer;
-/**
- * @type HTMLElement|null
- */
+/** @type HTMLElement|null **/
 let playgroundContainer;
-/**
- * @type HTMLElement|null
- */
+/** @type HTMLElement|null **/
 let resultsContainer;
 
 app.on("gameStarted", () => {
@@ -41,7 +33,7 @@ app.on("gameFinished", () => {
 
   game.finish();
   // TODO
-  // app.regGameStat(game.stats);
+  app.regGameStat(game.stats);
 
   playgroundContainer && (playgroundContainer.style.display = "none");
   resultsContainer && (resultsContainer.style.display = "block");

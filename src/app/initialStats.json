@@ -1,0 +1,48 @@
+{
+  "CoolUser": [
+    {
+      "score": 100,
+      "datetime": 123131232,
+      "gametime": 543,
+      "clicks": 150,
+      "caught": 5,
+      "missed": 7
+    },
+    {
+      "score": 200,
+      "datetime": 45123131232,
+      "gametime": 456,
+      "clicks": 230,
+      "caught": 34,
+      "missed": 56
+    }
+  ],
+  "zombie88": [
+    {
+      "score": 100,
+      "datetime": 123131232,
+      "gametime": 543,
+      "clicks": 150,
+      "caught": 5,
+      "missed": 7
+    },
+    {
+      "score": 200,
+      "datetime": 45123131232,
+      "gametime": 456,
+      "clicks": 230,
+      "caught": 34,
+      "missed": 56
+    }
+  ],
+  "Pe40nkin": [
+    {
+      "score": 100,
+      "datetime": 123131232,
+      "gametime": 543,
+      "clicks": 150,
+      "caught": 5,
+      "missed": 7
+    }
+  ]
+}

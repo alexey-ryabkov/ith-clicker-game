@@ -2,12 +2,8 @@ import { toggleClsInList } from "@utils-kit";
 
 document.addEventListener("DOMContentLoaded", () => {
   document.body.querySelectorAll(".tabs").forEach((tabs) => {
-    /**
-     * @type HTMLElement[]
-     */
+    /** @type HTMLElement[] **/
     const tabItems = Array.from(tabs.querySelectorAll(".tabs__tab") ?? []);
-    // console.log(tabItems);
-
     tabItems.forEach((tab) => {
       tab.addEventListener("click", (e) => {
         e.preventDefault();
@@ -15,9 +11,7 @@ document.addEventListener("DOMContentLoaded", () => {
         const choosedTab = /** @type {HTMLElement} */ (e.currentTarget);
         const activeNum = tabItems.indexOf(choosedTab);
 
-        /**
-         * @type HTMLElement[]
-         */
+        /** @type HTMLElement[] **/
         const tabsContents = Array.from(
           tabs.querySelectorAll(".tabs__content") ?? [],
         );

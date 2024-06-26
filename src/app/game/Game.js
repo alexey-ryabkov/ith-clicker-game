@@ -3,12 +3,10 @@ import "@app/types";
 import EventEmitter from "@lib/EventEmitter";
 // import Timer from "@lib/Timer";
 
-/**
- * @type GameStat
- */
-const INITIAL_STATS = {
+/** @type GameStat **/
+const INITIAL_GAME_STAT = {
   score: 0,
-  datetime: null,
+  datetime: 0,
   gametime: 0,
   clicks: 0,
   caught: 0,
@@ -16,7 +14,7 @@ const INITIAL_STATS = {
 };
 
 export default class Game {
-  _stats = INITIAL_STATS;
+  _stats = INITIAL_GAME_STAT;
 
   _emitter = new EventEmitter();
   // _timer = new Timer();
@@ -34,13 +32,13 @@ export default class Game {
     // TODO каждую секунду передавать обновление в playground ?
     // this._timer.start();
     this._stats = {
-      score: 100,
-      datetime: new Date(),
+      score: 111,
+      datetime: Date.now(),
       gametime: 543,
       clicks: 150,
       caught: 5,
       missed: 7,
-    }
+    };
   }
 
   finish() {}

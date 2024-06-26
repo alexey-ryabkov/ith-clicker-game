@@ -3,7 +3,7 @@ import EventEmitter from "./EventEmitter";
 /**
  * @param {number} min
  * @param {number} [max]
- * @returns
+ * @return
  */
 export const createRangeKeeper = (min, max) => (/** @type {number} */ value) =>
   Math.max(min, Math.min(max ?? Infinity, value));

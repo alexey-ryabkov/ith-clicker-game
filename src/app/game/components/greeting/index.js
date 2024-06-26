@@ -2,34 +2,24 @@ import app from "@application";
 import "@components/tabs";
 
 document.addEventListener("DOMContentLoaded", () => {
-  /**
-   * @type HTMLElement|null
-   */
+  /** @type HTMLElement|null **/
   const container = document.body.querySelector(".gameGreeting");
 
-  /**
-   * @type HTMLElement|null
-   */
+  /** @type HTMLElement|null **/
   const userHolder =
     container?.querySelector(".gameGreeting__welcomeUser") ?? null;
 
-  /**
-   * @type HTMLElement|null
-   */
+  /** @type HTMLElement|null **/
   const startBtn = container?.querySelector(".gameGreeting__startBtn") ?? null;
   startBtn?.addEventListener("click", (e) => {
     e.preventDefault();
     app.startGame();
   });
 
-  /**
-   * @type HTMLElement|null
-   */
+  /** @type HTMLElement|null **/
   const addUserBtn =
     container?.querySelector(".gameGreeting__addUserBtn") ?? null;
-  /**
-   * @type HTMLInputElement|null
-   */
+  /** @type HTMLInputElement|null **/
   const addUserInput =
     container?.querySelector(".gameGreeting__addUserInput") ?? null;
   addUserBtn?.addEventListener("click", (e) => {
@@ -41,17 +31,13 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 
-  /**
-   * @type HTMLElement|null
-   */
+  /** @type HTMLElement|null **/
   const chooseUserBtn =
     container?.querySelector(".gameGreeting__chooseUserBtn") ?? null;
 
   chooseUserBtn?.addEventListener("click", (e) => {
     e.preventDefault();
-    /**
-     * @type HTMLInputElement|null
-     */
+    /** @type HTMLInputElement|null **/
     const chosenUserRadio =
       container?.querySelector("input[type='radio'][name='users']:checked") ??
       null;

@@ -1,24 +1,16 @@
 import app from "@application";
 
 export default new (class {
-  /**
-   * @type HTMLElement|null
-   */
+  /** @type HTMLElement|null **/
   _scoreCounter = null;
-  /**
-   * @type HTMLElement|null
-   */
+  /** @type HTMLElement|null **/
   _timeCounter = null;
 
   build() {
-    /**
-     * @type HTMLElement|null
-     */
+    /** @type HTMLElement|null **/
     const container = document.body.querySelector(".gamePlayground") ?? null;
 
-    /**
-     * @type HTMLElement|null
-     */
+    /** @type HTMLElement|null **/
     const finishBtn =
       container?.querySelector(".gamePlayground__finishBtn") ?? null;
     finishBtn?.addEventListener("click", (e) => {

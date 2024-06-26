@@ -1,13 +1,9 @@
 import "@lib/types";
 
 export default class EventEmitter {
-  /**
-   * @type Events
-   */
+  /** @type Events **/
   events = {};
-  /**
-   * @type string[]
-   */
+  /** @type string[] **/
   _availiableEvents = [];
 
   /**

@@ -16,25 +16,21 @@ const srcPath = path.resolve(__dirname, "./src");
  *   data: Object
  * }} EntryParams
  */
-/**
- * @type EntryParams
- */
+/** @type EntryParams **/
 const entryParams = {
   import: "",
   filename: "[name]/index.html",
   data: {
     pathResolve: (/** @type {string} */ sPath) => path.resolve(srcPath, sPath),
     renderTmpl: (/** @type {string} */ path, options = {}) =>
-      pug.renderFile(`${srcPath}/${path}`, options, undefined),
+      pug.renderFile(`${srcPath}/${path}`, options),
     render: (/** @type {string} */ tmpl, options = {}) =>
-      pug.render(tmpl, options, undefined),
+      pug.render(tmpl, options),
     pages,
     log: (/** @type {string} */ msg) => console.log(msg),
   },
 };
-/**
- * @type EntryParams[]
- */
+/** @type EntryParams[] **/
 const entry = pages.reduce(
   (/** @type {Object.<{string}, {Object}>} */ result, page) => {
     const { name } = page;
@@ -57,7 +53,6 @@ const regAllChilds = /\/\*$/;
 const alias = Object.entries(jsConfigAliases).reduce(
   (/** @type {Object.<{string}, {string}>} */ result, [alias, sPaths]) => {
     let sPath = /** @type {string} */ (sPaths.pop());
-    console.log(sPath, typeof sPath);
     if (regAllChilds.test(sPath)) {
       alias = alias.replace(regAllChilds, "");
       sPath = sPath.replace(regAllChilds, "");
@@ -70,9 +65,7 @@ const alias = Object.entries(jsConfigAliases).reduce(
   {},
 );
 
-/**
- * @typedef {{ chunk: { name: string } }} PugFileData
- */
+/** @typedef {{ chunk: { name: string } }} PugFileData **/
 const commonConfig = {
   mode: "development",
   output: {

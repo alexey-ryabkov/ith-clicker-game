@@ -1,7 +1,7 @@
 /**
  * @typedef {{
  *   score: number,
- *   datetime: Date|null,
+ *   datetime: number,
  *   gametime: number,
  *   clicks: number,
  *   caught: number,

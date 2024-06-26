@@ -57,14 +57,13 @@ body {
   height: 100%;
 }
 
-html[data-theme-dark] pre code.hljs {
-  background: var(--content-bg-color, $black);
-  padding: 0;
-}
-
 body {
   font-family: $font-family-def;
   font-weight: $font-weight-def;
   font-style: normal;
   color: $black;
+}
+
+canvas {
+  display: block;
 }

@@ -2,7 +2,7 @@
  * @param {HTMLElement[]} list
  * @param {HTMLElement|number} toggled
  * @param {string} cls
- * @returns
+ * @return
  */
 export function toggleClsInList(list, toggled, cls) {
   list.forEach((item, num) => {
@@ -22,7 +22,7 @@ export function toggleClsInList(list, toggled, cls) {
 /**
  * @param {number} number
  * @param {NumeralItemVariants} variants
- * @returns {string}
+ * @return {string}
  */
 export function formatNumeralItem(number, variants) {
   let result = `${number} `;
@@ -47,7 +47,7 @@ export function formatNumeralItem(number, variants) {
 }
 /**
  * @param {number} ms
- * @returns {string}
+ * @return {string}
  */
 export function formatTime(ms) {
   const SECONDS_IN_MINUTE = 60;
@@ -61,7 +61,7 @@ export function formatTime(ms) {
 }
 /**
  * @param {unknown} value
- * @returns {boolean}
+ * @return {boolean}
  */
 export function isPlainObject(value) {
   return (

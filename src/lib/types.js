@@ -6,3 +6,8 @@
 /**
  * @typedef {Object.<string, EventHandler[]>} Events
  */
+/**
+ * @callback Callable
+ * @param {...any} args
+ * @return {any}
+ */

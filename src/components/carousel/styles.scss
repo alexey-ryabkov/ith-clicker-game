@@ -40,7 +40,7 @@
 
     @include box-stack(0, center);
 
-    &_active {
+    &:first-child {
       transition: margin 1s;
     }
   }
