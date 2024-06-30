@@ -1,24 +1,6 @@
 .accordion {
   @include font-def;
 
-  &_compact {
-    font-size: 9px;
-
-    @media (--layout-mf-sm) {
-      font-size: 11px;
-    }
-    @media (--layout-mf-md) {
-      font-size: 12px;
-    }
-    @media (--layout-mf-xl) {
-      font-size: 13px;
-    }
-  }
-
-  &_fullWidth {
-    width: 100%;
-  }
-
   &__item {
     border: 1px solid var(--content-border-color, $grey-3);
     background: var(--content-bg-color, white);
@@ -32,13 +14,10 @@
   &__itemSummary {
     list-style: none;
     padding: 1.5em 2em;
-    color: var(--text-contrast-color, $black);
+    color: var(text-primary-color);
+    font-weight: bold;
   
     @include text-interactive;
-
-    &::marker {
-      display: none;
-    }
 
     &::before {
       content: '\1433';
@@ -50,7 +29,7 @@
     }
   }
 
-  &__item[open] &__itemSummary {
+  &__item_open &__itemSummary {
     padding-bottom: 1em;
 
     &::before {
@@ -59,8 +38,18 @@
   }
 
   &__itemDetails {
-    margin: 0;
-    padding: 0 2em 2em;
+    margin: 0;    
     color: var(--text-regular-color, $grey-4);
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.5s ease;
+  }
+
+  /* &__item_open &__itemDetails {
+    max-height: initial;
+  } */
+
+  &__itemDetailsWrapper {
+    padding: 0 2em 2em;
   }
 }

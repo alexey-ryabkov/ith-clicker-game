@@ -1,9 +1,8 @@
-mixin accordion(items = [], numActive = 0)
-  .accordion
+mixin accordion(items = [], cls =[], numActive = 0)
+  div(class=['accordion', ...cls])
     each item, num in items 
       - const { label, content } = item;
-      details.accordion__item(open=(num === numActive))
-        summary.accordion__itemSummary
-          = label
-        p.accordion__itemDetails
-          != content 
+      div(class=['accordion__item', {'accordion__item_open': num === numActive}])
+        .accordion__itemSummary= label
+        .accordion__itemDetails
+          .accordion__itemDetailsWrapper!= content 

@@ -3,3 +3,16 @@
 @import "../../css/global.scss";
 @import "../../layouts/baseLayout/baseLayout.scss";
 @import "../../components/accordion/styles.scss";
+@import "../../components/table/styles.scss";
+@import "../../components/button/styles.scss";
+
+.stats {
+  &__accordion {
+    margin: * * 1.5em;
+  }
+  
+  &__clearBtn {
+    display: block;
+    margin: * auto;
+  }
+}

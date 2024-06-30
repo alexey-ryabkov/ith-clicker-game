@@ -1,13 +1,15 @@
 include ../../layouts/baseLayout/tmpl
 include ../../components/accordion/tmpl
+include ../../components/button/tmpl
 - 
-  const { render, pathResolve } = locals;
+  const { render, utils: { pathResolve }} = locals;
   const filename = pathResolve('pages/stats/index');
 +baseLayout('stats')
-  +accordion([
-    {
-      label: 'AnotherUser / 50 / 03:00',
-      content: render(`
+  .stats
+    +accordion([
+      {
+        label: 'AnotherUser / 50 / 03:00',
+        content: render(`
 include ../../components/table/tmpl      
 +table(
   { 
@@ -31,9 +33,10 @@ include ../../components/table/tmpl
     }
   ]
 )`, { filename })
-    },
-    {
-      label: 'SomeUser / 100 / 02:30',
-      content: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Eius, odio mollitia? Doloremque architecto officiis doloribus esse libero, iure, dolores animi tenetur quibusdam nesciunt, assumenda illum aliquid incidunt quaerat deleniti vitae.'
-    },
-  ])
+      },
+      {
+        label: 'SomeUser / 100 / 02:30',
+        content: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Eius, odio mollitia? Doloremque architecto officiis doloribus esse libero, iure, dolores animi tenetur quibusdam nesciunt, assumenda illum aliquid incidunt quaerat deleniti vitae.'
+      },
+    ], ['stats__accordion'])
+    +button('Очистить [Del]', ['button_width_200', 'stats__clearBtn'])
