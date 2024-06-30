@@ -6,9 +6,22 @@
   "plugins": ["stylelint-prettier"],
   "rules": {
     "custom-media-pattern": null,
+    "custom-property-pattern": [
+      null,
+      {
+        "severity": "warning"
+      }
+    ],
+    "property-no-unknown": [
+      true,
+      {
+        "ignoreProperties": ["border-left-radius"]
+      }
+    ],
     "selector-class-pattern": [
       "^_?[$]?[a-z][a-z0-9]*([A-Z][a-z0-9]*)*(_{1,2}[$]?[a-z0-9]+([A-Z][a-z0-9]*)*)*$",
       {
+        "severity": "warning",
         "resolveNestedSelectors": true
       }
     ],

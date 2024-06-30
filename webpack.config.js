@@ -1,10 +1,10 @@
 const path = require("path");
-// const { merge } = require("webpack-merge");
 const pug = require("pug");
 const PugPlugin = require("pug-plugin");
 const CssMinimizerPlugin = require("css-minimizer-webpack-plugin");
 const TerserPlugin = require("terser-webpack-plugin");
 const { CleanWebpackPlugin } = require("clean-webpack-plugin");
+const { prettyDateTime } = require("./src/utils/index.js");
 const pages = require("./src/pages");
 const jsConfig = require("./jsconfig.json");
 
@@ -21,12 +21,19 @@ const entryParams = {
   import: "",
   filename: "[name]/index.html",
   data: {
-    pathResolve: (/** @type {string} */ sPath) => path.resolve(srcPath, sPath),
     renderTmpl: (/** @type {string} */ path, options = {}) =>
       pug.renderFile(`${srcPath}/${path}`, options),
     render: (/** @type {string} */ tmpl, options = {}) =>
       pug.render(tmpl, options),
     pages,
+    utils: {
+      pathResolve: (/** @type {string} */ sPath) =>
+        path.resolve(srcPath, sPath),
+      log: (/** @type {string} */ msg) => console.log(msg),
+      prettyDateTime,
+    },
+    // FIXME legacy
+    pathResolve: (/** @type {string} */ sPath) => path.resolve(srcPath, sPath),
     log: (/** @type {string} */ msg) => console.log(msg),
   },
 };
@@ -112,22 +119,7 @@ const commonConfig = {
   },
   resolve: {
     alias,
-    // alias: {
-    //   "@components": path.resolve(__dirname, "src/components"),
-    //   "@lib": path.resolve(__dirname, "src/lib"),
-    //   "@utils-kit": path.resolve(__dirname, "src/utils/index.js"),
-    //   "@utils": path.resolve(__dirname, "src/utils"),
-    //   "@app": path.resolve(__dirname, "src/app"),
-    //   "@game": path.resolve(__dirname, "src/app/game"),
-    // },
     extensions: [".pug", ".js", ".css", ".pcss", ".scss"],
   },
 };
 module.exports = commonConfig;
-/* (env, argv) => {
-  const config = require(
-    `./tools/webpack.${env.WEBPACK_SERVE ? "development" : argv.mode}`,
-  );
-
-  return merge(commonConfig, config);
-}; */
