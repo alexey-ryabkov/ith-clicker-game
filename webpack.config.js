@@ -32,9 +32,6 @@ const entryParams = {
       log: (/** @type {string} */ msg) => console.log(msg),
       prettyDateTime,
     },
-    // FIXME legacy
-    pathResolve: (/** @type {string} */ sPath) => path.resolve(srcPath, sPath),
-    log: (/** @type {string} */ msg) => console.log(msg),
   },
 };
 /** @type EntryParams[] **/
