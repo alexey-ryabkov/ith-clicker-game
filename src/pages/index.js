@@ -1,15 +1,19 @@
 module.exports = [
   {
     name: "main",
-    pageTitle: "Игра-кликер",
-    menuTitle: "К описанию игры",
+    browserTitle: "Star Clicker: описание",
+    pageTitle: "Что такое Star Clicker?",
+    menuTitle: "Описание",
   },
   {
     name: "stats",
-    pageTitle: "Статистика игры",
+    browserTitle: "Star Clicker: статистика",
+    pageTitle: "Статистика игр",
+    menuTitle: "Статистика",
   },
   {
     name: "game",
-    pageTitle: "Игра-кликер",
+    browserTitle: "Star Clicker: игра",
+    menuTitle: "Играть!",
   },
 ];

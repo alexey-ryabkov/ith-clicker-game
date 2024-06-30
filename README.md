@@ -19,8 +19,9 @@ npm i
 # сборка и запуск в production-режиме
 npm run start 
 
-# сборка проекта
-npm run build 
+# сборка проекта в production- и dev-режимах
+npm run build:build
+npm run build:dev 
 
 # запуск в dev-режиме
 npm run dev
@@ -29,3 +30,4 @@ npm run dev
 ## Прочая полезная информация
 
 - Для сборки проекта нужна NodeJS >= 22.3
+- Для запуска проекта должен быть свободен порт 8080

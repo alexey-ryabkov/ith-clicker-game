@@ -69,54 +69,64 @@ const alias = Object.entries(jsConfigAliases).reduce(
   {},
 );
 
-/** @typedef {{ chunk: { name: string } }} PugFileData **/
-const commonConfig = {
-  mode: "development",
-  output: {
-    path: path.resolve(__dirname, "./dist"),
-  },
-  module: {
-    rules: [
-      {
-        test: /\.js$/,
-        loader: "babel-loader",
-      },
-      {
-        test: /\.(p|s)?css$/,
-        use: ["css-loader", "postcss-loader"],
-      },
-      {
-        test: /\.(png|jpe?g|gif|webp|svg)$/i,
-        type: "asset/resource",
-      },
+/**
+ * @typedef {{ chunk: { name: string } }} PugFileData
+ */
+// @ts-ignore
+module.exports = ({ WEBPACK_SERVE }, /** @type Object */ argv) => {
+  const mode = WEBPACK_SERVE
+    ? "development"
+    : "mode" in argv
+      ? argv.mode
+      : "production";
+  const isDev = mode === "development";
+  return {
+    mode,
+    output: {
+      path: path.resolve(__dirname, "./dist"),
+    },
+    module: {
+      rules: [
+        {
+          test: /\.js$/,
+          loader: "babel-loader",
+        },
+        {
+          test: /\.(p|s)?css$/,
+          use: ["css-loader", "postcss-loader"],
+        },
+        {
+          test: /\.(png|jpe?g|gif|webp|svg)$/i,
+          type: "asset/resource",
+        },
+      ],
+    },
+    plugins: [
+      new CleanWebpackPlugin(),
+      new PugPlugin({
+        pretty: "auto",
+        entry,
+        js: {
+          filename: (/** @type {PugFileData} */ { chunk: { name } }) =>
+            name !== "main" ? "[name]/scripts.js" : "scripts.js",
+        },
+        css: {
+          filename: (/** @type {PugFileData} */ { chunk: { name } }) =>
+            name !== "main" ? "[name]/styles.css" : "styles.css",
+        },
+        minify: !isDev,
+      }),
     ],
-  },
-  plugins: [
-    new CleanWebpackPlugin(),
-    new PugPlugin({
-      pretty: "auto",
-      entry,
-      js: {
-        filename: (/** @type {PugFileData} */ { chunk: { name } }) =>
-          name !== "main" ? "[name]/scripts.js" : "scripts.js",
-      },
-      css: {
-        filename: (/** @type {PugFileData} */ { chunk: { name } }) =>
-          name !== "main" ? "[name]/styles.css" : "styles.css",
-      },
-      minify: false,
-    }),
-  ],
-  optimization: {
-    minimize: false,
-    minimizer: [
-      new TerserPlugin({ extractComments: false }),
-      new CssMinimizerPlugin(),
-    ],
-  },
-  resolve: {
-    alias,
-    extensions: [".pug", ".js", ".css", ".pcss", ".scss"],
-  },
+    optimization: {
+      minimize: !isDev,
+      minimizer: [
+        new TerserPlugin({ extractComments: !isDev }),
+        new CssMinimizerPlugin(),
+      ],
+    },
+    resolve: {
+      alias,
+      extensions: [".pug", ".js", ".css", ".pcss", ".scss"],
+    },
+  };
 };
-module.exports = commonConfig;

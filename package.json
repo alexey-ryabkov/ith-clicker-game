@@ -12,8 +12,9 @@
     "node": ">=22.0.0"
   },
   "scripts": {
-    "start": "npm-run-all build live-server",
-    "build": "webpack",
+    "start": "npm-run-all build:prod live-server",
+    "build:prod": "webpack --mode=production --define-process-env-node-env=production",
+    "build:dev": "webpack --mode=development",
     "dev": "webpack serve --watch",
     "live-server": "live-server dist --open --port=8080"
   },
