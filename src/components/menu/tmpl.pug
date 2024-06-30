@@ -1,5 +1,16 @@
+include ../tabs/tmpl
 mixin menu(items, activeItem = '')
+  - 
+    const { render } = locals;
+    let numActive;    
+    items = items.map((item, num) => {
+      const { name, title, link = '#' } = item;
+      const isActive = name == activeItem;
+      const label = render(`a(href='${link}' class=['menu__item', {'menu__item_active': ${isActive ? 'true' : 'false'}}])= '${title}'\n`);
+      if (isActive) {
+        numActive = num;
+      }
+      return { label }
+    });
   nav.menu
-    each item in items
-      - const { name, title, link = '#'} = item;
-      a(href=link class=['menu__item', {'menu__item_active': name == activeItem}])= title
+    +tabs(items, ['tabs_centered', 'menu__tabs'], numActive, true)

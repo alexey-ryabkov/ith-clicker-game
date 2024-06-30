@@ -1,0 +1,19 @@
+@import "../tabs/styles.scss";
+
+.menu {
+  font-size: 18px;
+
+  &__item {
+    font-size: 1em;
+    color: var(--text-primary-color);
+
+    &_active {
+      text-decoration: none;
+      cursor: default;
+    }
+
+    &:hover {
+      text-decoration: none;
+    }
+  }
+}

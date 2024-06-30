@@ -1,11 +1,12 @@
-mixin tabs(items = [], numActive = 0)
-  .tabs
+mixin tabs(items = [], cls = [], numActive = 0, onlyTabs = false)
+  div(class=['tabs', ...cls])
     .tabs__nav
       each item, num in items
         - const { label } = item;
         span(class=['tabs__tab', { 'tabs__tab_active': num ===  numActive}])
-          span.tabs__tabTitle= label
-    each item, num in items
-      div(class=['tabs__content', { 'tabs__content_opened': num ===  numActive}]) 
-        - const { content } = item;
-        != content
+          span.tabs__tabTitle!= label
+    if (!onlyTabs)      
+      each item, num in items
+        div(class=['tabs__content', { 'tabs__content_opened': num ===  numActive}]) 
+          - const { content } = item;
+          != content

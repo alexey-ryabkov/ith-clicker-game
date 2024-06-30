@@ -3,10 +3,10 @@ $max-tabs-cnt: 5;
 .tabs {
   &__nav {
     display: flex;
-    gap: 24px;
+    gap: 1.5em;
     width: 100%;
     overflow: hidden;
-  
+
     @media (--layout-mf-md) {
       gap: 40px;
     }
@@ -17,19 +17,18 @@ $max-tabs-cnt: 5;
     display: inline-block;
     border-bottom: 5px solid transparent;
     padding-bottom: 8px;
-    
+
     @include text-interactive;
-    @include font-def; 
-  
+
     &:hover {
       color: var(--text-primary-color, $grey-4);
-    }    
+    }
   }
 
   &__tab_active &__tabTitle {
     color: var(--text-primary-color, $black);
     border-bottom-color: var(--text-primary-color, $black);
-    cursor: default; 
+    cursor: default;
   }
 
   &__content {
@@ -37,6 +36,12 @@ $max-tabs-cnt: 5;
 
     &_opened {
       display: block;
+    }
+  }
+
+  &_centered {
+    & .tabs__nav {
+      justify-content: center;
     }
   }
 }

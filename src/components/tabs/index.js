@@ -6,8 +6,6 @@ document.addEventListener("DOMContentLoaded", () => {
     const tabItems = Array.from(tabs.querySelectorAll(".tabs__tab") ?? []);
     tabItems.forEach((tab) => {
       tab.addEventListener("click", (e) => {
-        e.preventDefault();
-
         const choosedTab = /** @type {HTMLElement} */ (e.currentTarget);
         const activeNum = tabItems.indexOf(choosedTab);
 
