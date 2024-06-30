@@ -16,7 +16,8 @@
       "@utils/*": ["utils/*"],
       "@application": ["app"],
       "@app/*": ["app/*"],
-      "@game/*": ["app/game/*"]
+      "@game/*": ["app/game/*"],
+      "@pages": ["pages"]
     }
   },
   "include": ["src/**/*", "tools", "webpack.config.js"]

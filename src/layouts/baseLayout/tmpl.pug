@@ -24,7 +24,7 @@ mixin baseLayout(pageName, ...params)
           const menuItems = pages.map(({ name, pageTitle, menuTitle }) => ({
             name,
             title: menuTitle || pageTitle,
-            link: name !== "main" ? `/${name}/` : '/'
+            link: name !== "main" ? `/${name}/` : '/index.html'
           }));
         +menu(menuItems, pageName)
         if pageTitle

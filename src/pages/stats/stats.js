@@ -1,4 +1,5 @@
 import app from "@application";
+import "@components/menu";
 import "@components/accordion";
 import { keyboardController } from "@utils/keyboardController";
 
