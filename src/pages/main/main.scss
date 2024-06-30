@@ -1,9 +1,6 @@
-@import '../../css/vars.scss';
-@import '../../css/mixins.scss';
-@import '../../css/main.scss';
-@import '../../layouts/baseLayout/baseLayout.scss';
-@import '../../components/carousel/styles.scss';
-
-h1 {
-  color: $red;
-}
+@import "../../css/vars.scss";
+@import "../../css/mixins.scss";
+@import "../../css/global.scss";
+@import "../../layouts/baseLayout/baseLayout.scss";
+@import "../../components/carousel/styles.scss";
+@import "../../components/button/styles.scss";

@@ -1,2 +1,96 @@
-@import '../../assets/fonts/fonts.css';
-@import '../../components/menu/menu.scss';
+@import "../../assets/css/normalize.css";
+@import "../../assets/css/fonts.css";
+@import "../../assets/css/fontawesome.min.css";
+@import "../../assets/css/fa-brands.min.css";
+@import "../../assets/css/fa-regular.min.css";
+@import "../../assets/css/fa-solid.min.css";
+@import "../../components/menu/styles.scss";
+
+.layoutContainer {
+  width: 100%;
+  max-width: 1024px;
+  min-width: 360px;
+  padding: 0 15px;
+  box-sizing: border-box;
+
+  @media (--layout-mf-lg) {
+    padding: 0 32px;
+  }
+}
+
+.page {
+  @include box-stack(0, center);
+
+  &__header {
+    height: 300px;
+  }
+
+  &__title {
+    text-align: center;
+  }
+}
+
+.header {
+  background: url("../../assets/images/header-bg.png") calc(50% - 40px) center /
+    contain no-repeat;
+
+  @util center;
+
+  &__logo {
+    color: #9efff4;
+    word-spacing: 180px;
+
+    @include font(4em, false, $font-weight-def, "Audiowide");
+  }
+
+  @media (max-width: 768px) {
+    align-items: flex-end;
+    margin: * * 1.5em;
+    background-position: center top;
+
+    &__logo {
+      word-spacing: normal;
+      font-size: 3em;      
+    }
+  }
+}
+
+.footer {
+  padding: 2em 1.5em *;
+  gap: 1.5em;
+
+  @util center;
+
+  &__logo {
+    flex-shrink: 0;
+    width: 125px;
+
+    img {
+      @include img-cover;
+    }
+  }
+
+  &__note {
+    font-weight: 300;
+    width: 40%;
+    max-width: 80%;
+
+    span {
+      color: darken($white, 45%);
+    }
+  }
+
+  @media (--layout-df-md) {
+    padding-bottom: 2em;
+    gap: 2em;
+
+    &__logo {
+      width: 100px;
+    }
+
+    &__note {
+      font-size: 0.8rem;
+      width: auto;
+    }
+  }
+}

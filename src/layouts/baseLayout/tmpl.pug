@@ -9,18 +9,33 @@ mixin baseLayout(pageName, ...params)
       title= (browserTitle || pageTitle)
       meta(charset='utf-8')/
       meta(name='viewport' content='width=device-width, initial-scale=1, maximum-scale=1')/
-      meta(name='theme-color' content='#3a6d70')/
-      link(rel='shortcut icon' type='image/png' href='data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAIAAADYYG7QAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAF1JREFUeNrs0TENgDAURdEWMd27MOCgSiqjew0gAAE4QFs1kHwShnMFvJzk5VJbimiOHrKzpZ8FBAQEBAQEBAQEBAT0bfm8j5Ch69ldBgQEBAQEBAQEBAQE9L4lwABcvgWGe23wIgAAAABJRU5ErkJggg==')/
+      meta(name="theme-color", content="#000000")/
+      meta(name="msapplication-TileColor", content="#000000")/
+      link(rel="apple-touch-icon", sizes="180x180", href="../../assets/images/favicon/apple-touch-icon.png")/
+      link(rel="icon", type="image/png", sizes="32x32", href="../../assets/images/favicon/favicon-32x32.png")/
+      link(rel="icon", type="image/png", sizes="16x16", href="../../assets/images/favicon/favicon-16x16.png")/
+      link(rel="mask-icon", href="../../assets/images/favicon/safari-pinned-tab.svg", color="#5bbad5")/
       link(rel='stylesheet' href=`./${pageName}.scss`)/
-    body
-      h1= pageTitle
-      - 
-        const menuItems = pages.map(({ name, pageTitle, menuTitle }) => ({
-          name,
-          title: menuTitle || pageTitle,
-          link: name !== "main" ? `/${name}/` : '/'
-        }));
-      +menu(menuItems, pageName)
-      if block
-        block
+    body(class=['page', `page_${pageName}`])
+      header.layoutContainer.header.page__header  
+        .header__logo Star Clicker
+      main.layoutContainer.page__content        
+        - 
+          const menuItems = pages.map(({ name, pageTitle, menuTitle }) => ({
+            name,
+            title: menuTitle || pageTitle,
+            link: name !== "main" ? `/${name}/` : '/'
+          }));
+        +menu(menuItems, pageName)
+        if pageTitle
+          h1.page__title= pageTitle
+        if block
+          block
+      footer.layoutContainer.footer.page__footer
+        .footer__logo
+          img(src='../../assets/images/ithub-logo-transparent.png')/
+        p#project.m-0.py-3.footer__note 
+          strong Учебный проект 
+          span создан в рамках обучения по программе на бизнес-роль &laquo;фронтенд-разработчик&raquo; для курса JS&nbsp;DOM
+          a(name='project') 
       script(type='text/javascript' src=`./${pageName}.js`)

@@ -1,21 +1,27 @@
-@mixin font($size: false, $line-height: false, $weight: false, $family: false, $letter-spacing: false) {
+@mixin font(
+  $size: false,
+  $line-height: false,
+  $weight: false,
+  $family: false,
+  $letter-spacing: false
+) {
   @if $size {
     font-size: $size;
-  } 
+  }
   @if $line-height {
     line-height: $line-height;
-  } 
+  }
   @if $weight {
     font-weight: $weight;
-  } 
+  }
   @if $family {
     font-family: $family;
-  } 
+  }
   @if $letter-spacing {
     letter-spacing: $letter-spacing;
   }
 }
-@mixin font-def { 
+@mixin font-def {
   @include font($font-size-def, $line-height-def);
 }
 @mixin text-interactive {
@@ -26,7 +32,7 @@
   margin: 0;
   padding: 0;
   border: 0;
-  
+
   @if $zeroFont {
     font-size: 0;
   }
@@ -40,7 +46,7 @@
   object-fit: cover;
   size: 100%;
 }
-@mixin box-covering($position: false, $z-index: false) {  
+@mixin box-covering($position: false, $z-index: false) {
   inset: 0;
 
   @if $position {
@@ -51,11 +57,6 @@
   @if $z-index {
     z-index: $z-index;
   }
-}
-@mixin box-centering {
-  display: flex;
-  align-items: center;
-  justify-content: center;
 }
 @mixin box-aligning($gap: false) {
   display: flex;
@@ -75,7 +76,7 @@
   }
   @if $align {
     align-items: $align;
-  }  
+  }
 }
 @mixin axis-centered($axis: false) {
   position: absolute;
@@ -90,5 +91,5 @@
     } @else {
       @util center;
     }
-  }  
+  }
 }

@@ -1,0 +1,47 @@
+/* stylelint-disable custom-property-empty-line-before */
+@each $breakpoint $name in $layout-breakpoints {
+  @custom-media --layout-mf-$name screen and (width >= $breakpoint);
+}
+@each $breakpoint $name in $layout-breakpoints {
+  @custom-media --layout-df-$name screen and (width < $breakpoint);
+}
+
+:root {
+  --bg-color: #{$black};
+  --border-color: #{$grey-3};
+  --page-bg-color: var(--bg-color);
+
+  --text-primary-color: #{$white};
+  --text-contrast-color: #{$grey-3};
+  --text-contrastOnLight-color: #{$grey-3};
+  --text-contrastOnDark-color: #{$grey-2};
+  --text-regular-color: #{$grey-3};
+  --text-pale-color: #{$grey-3};
+  --text-mute-color: #{$grey-4};
+
+  --content-color: #{$grey-2};
+  --content-bg-color: #{$black};
+  --content-border-color: var(--border-color);
+
+  --control-color: #{$white};
+  --control-bg-color: #{$white};
+  --control-border-color: #{$grey-2};
+  --control-active-border-color: #{$white};
+  --control-active-bg-color: #{$grey-4-lighter};
+  --control-checked-color: #{$color-primary};
+  --control-checked-active-color: #{$color-primary-active};
+  --control-disabled-color: #{$grey-4-lighter};
+  --control-disabled-border-color: #{$grey-4};
+  --control-disabled-bg-color: #{$grey-4};
+}
+
+body {
+  font-family: $font-family-def;
+  font-weight: $font-weight-def;
+  font-style: normal;
+  color: var(--text-primary-color, $white) var(--page-bg-color, $black);
+}
+
+canvas {
+  display: block;
+}

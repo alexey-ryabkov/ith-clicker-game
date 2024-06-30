@@ -4,8 +4,9 @@ module.exports = {
     require("postcss-import"),
     require("postcss-advanced-variables"),
     require("postcss-nested"),
-    require("postcss-utilities"),
+    require("postcss-utilities")({ centerMethod: "flexbox" }),
     require("postcss-short"),
+    // require("postcss-sass-color-functions"),
     require("postcss-map-get"),
     require("postcss-preset-env")({
       features: {
