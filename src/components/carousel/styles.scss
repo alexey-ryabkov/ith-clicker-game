@@ -2,18 +2,18 @@
   width: 100%;
   box-sizing: border-box;
   padding: * 2em;
+  text-align: center;
 
   @include box-stack(0.5em, center);
 
   &__container {
     width: 100%;
 
-    @include box-aligning(2em);
+    @include box-aligning(0.5em);
   }
 
   &__navBtn {
-    font-size: 3em;
-    font-weight: bold;
+    color: var(--text-primary-color);
     opacity: 0.5;
     text-decoration: none;
 
@@ -23,9 +23,13 @@
       opacity: 1;
     }
 
-    &_prev {
-      transform: rotate(180deg);
+    &_inactive {
+      visibility: hidden;
     }
+  }
+
+  &__navBtnLabel {
+    @util hide-visually;
   }
 
   &__slidesContainer {
@@ -47,8 +51,20 @@
 
   &__slideImg {
     width: 100%;
-    aspect-ratio: 16 / 9;
     overflow: hidden;
+
+    &_square {
+      aspect-ratio: 1 / 1;
+    }
+  }
+
+  &__slideTitle {
+    margin: 0 * 1em;
+  }
+
+  &__slideDesc {
+    line-height: 1.3;
+    margin: 0;
   }
 
   &__img {
@@ -66,20 +82,28 @@
   }
 
   &__page {
-    font-size: 1.5em;
+    color: var(--text-primary-color);
     font-weight: bold;
     text-decoration: none;
 
     @include text-interactive;
 
-    &::before {
-      content: '\25ef';
+    .fa-solid {
+      display: none;
     }
 
     &_active {
-      &::before {
-        content: '\25ce';
+      .fa-solid {
+        display: initial;
+      }
+
+      .fa-regular {
+        display: none;
       }
     }
+  }
+
+  &__pageLabel {
+    @util hide-visually;
   }
 }

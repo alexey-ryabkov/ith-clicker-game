@@ -1,26 +1,30 @@
 include ../../layouts/baseLayout/tmpl
 include ../../components/carousel/tmpl
+include ../../components/button/tmpl
 +baseLayout('main')
-  +carousel([
-    {
-      title: 'Про игру в целом',
-      desc: 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Eveniet provident impedit accusantium esse ex dignissimos tempore voluptatibus optio animi inventore quo minus, officiis omnis nesciunt sed. Inventore magni maxime aut?',
-      image: {
-        src: 'https://images.unsplash.com/photo-1677247191557-4abd28b7c387?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1031&q=80',
+  .main
+    p.main__desc &mdash;&nbsp;это игра-кликер, где клик мышью - единственная игровая механика для достижения цели в игре. У Star Clicker простые правила (для перемещения между слайдами можете использовать стрелки вперед/назад):
+    +carousel([
+      {
+        title: 'Кликаем по звездам',
+        desc: 'В процессе игре на поле игровом поле хаотично появляются звезды, по которым вам нужно кликать',
+        image: {
+          src: '../../assets/images/slide1.jpeg',
+        }
+      },
+      {
+        title: 'Зарабатываем очки',
+        desc: 'Клик по звезде дает очки! В процессе игры количество получаем очков увеличивается, но увеличивается и количество звезд, кроме того они становятся более неуловимы.',
+        image: {
+          src: '../../assets/images/slide2.jpeg',
+        }
+      },
+      {
+        title: 'Ничего не упускаем',
+        desc: 'Звезды &laquo;живут&raquo; на игровом поле некоторое время, и те, по которыми вы не успели кликнуть &ndash; исчезают, а исчезнув отнимают очки. Так что будьте проворны!',
+        image: {
+          src: '../../assets/images/slide3.jpeg',
+        }
       }
-    },
-    {
-      title: 'Про хорошие монетки',
-      desc: 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Eveniet provident impedit accusantium esse ex dignissimos tempore voluptatibus optio animi inventore quo minus, officiis omnis nesciunt sed. Inventore magni maxime aut?',
-      image: {
-        src: 'https://images.unsplash.com/photo-1672243775941-10d763d9adef?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80',
-      }
-    },
-    {
-      title: 'Про плохие монетки',
-      desc: 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Eveniet provident impedit accusantium esse ex dignissimos tempore voluptatibus optio animi inventore quo minus, officiis omnis nesciunt sed. Inventore magni maxime aut?',
-      image: {
-        src: 'https://images.unsplash.com/photo-1677241817906-a84211b4f627?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=435&q=80',
-      }
-    }
-  ])
+    ], ['main__carousel'])
+    +button('Играть!', ['button_width_200', 'main__button'])
