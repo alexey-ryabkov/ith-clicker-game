@@ -1,10 +1,11 @@
 @import "./components/greeting/styles.scss";
+@import "./components/playground/styles.scss";
 @import "./components/results/styles.scss";
 
 .game {
   &__playground {
     display: none;
-  }
+  } 
 
   &__results {
     display: none;

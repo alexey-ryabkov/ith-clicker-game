@@ -87,7 +87,7 @@ export default new (class {
     this._emitter.emit("gameFinished");
   }
 
-  _clearGameStats() {
+  clearGameStats() {
     localStorage.removeItem("gameStats");
   }
 })();

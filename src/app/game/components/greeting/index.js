@@ -1,5 +1,10 @@
 import app from "@application";
 import "@components/tabs";
+import { toggleDisabled } from "@utils-kit";
+import { keyboardController } from "@utils/keyboardController";
+
+const USER_MIN_NAME = 5;
+const USER_MAX_NAME = 20;
 
 document.addEventListener("DOMContentLoaded", () => {
   /** @type HTMLElement|null **/
@@ -16,20 +21,39 @@ document.addEventListener("DOMContentLoaded", () => {
     app.startGame();
   });
 
-  /** @type HTMLElement|null **/
-  const addUserBtn =
-    container?.querySelector(".gameGreeting__addUserBtn") ?? null;
+  keyboardController({
+    Enter: () => app.startGame(),
+  });
+
   /** @type HTMLInputElement|null **/
   const addUserInput =
     container?.querySelector(".gameGreeting__addUserInput") ?? null;
+  addUserInput?.addEventListener("input", function (event) {
+    const input = /** @type {HTMLInputElement} */ (event.target);
+    addUserBtn && toggleDisabled(addUserBtn, false);
+    if (input.value.length > USER_MIN_NAME) {
+      validateUserName(input.value);
+    }
+  });
+  addUserInput?.addEventListener("paste", function (event) {
+    const paste = event.clipboardData?.getData("text") ?? "";
+    addUserBtn && toggleDisabled(addUserBtn, false);
+    if (!validateUserName(paste)) {
+      event.preventDefault();
+    }
+  });
+
+  /** @type HTMLInputElement|null **/
+  const addUserBtn =
+    container?.querySelector(".gameGreeting__addUserBtn") ?? null;
   addUserBtn?.addEventListener("click", (e) => {
     e.preventDefault();
-    // TODO проверять корректность ввода
-    const newUser = addUserInput?.value;
-    if (newUser) {
+    const newUser = addUserInput?.value ?? "";
+    if (validateUserName(newUser)) {
       actualizeAppUser(newUser);
     }
   });
+  addUserBtn && toggleDisabled(addUserBtn, true);
 
   /** @type HTMLElement|null **/
   const chooseUserBtn =
@@ -50,17 +74,30 @@ document.addEventListener("DOMContentLoaded", () => {
 
   actualizeAppUser(app.user);
 
-  // TODO мб использовать обработку события смены пользователя?
   /**
    * @param {string|null} user
    */
   function actualizeAppUser(user) {
     app.user = user;
-    startBtn && (startBtn.style.display = user ? "inline-block" : "none");
+    startBtn && (startBtn.style.display = user ? "initial" : "none");
     userHolder && (userHolder.textContent = user || "");
     addUserInput && (addUserInput.value = "");
     // TODO строим интерфейс chooseUser
-    // TODO и выбираем в нем текущего пользователя
+    // TODO и выбираем текущего пользователя
     // app.users.filter((user) => user !== app.user);
+  }
+  /**
+   * @param {*} name
+   * @returns
+   */
+  function validateUserName(name) {
+    const isValid = new RegExp(
+      `^[a-zA-Z0-9_-]{${USER_MIN_NAME},${USER_MAX_NAME}}$`,
+    ).test(name);
+    if (!isValid) {
+      addUserBtn && toggleDisabled(addUserBtn, true);
+      alert("Задано некорректное имя!");
+    }
+    return isValid;
   }
 });

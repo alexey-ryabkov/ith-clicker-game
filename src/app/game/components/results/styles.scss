@@ -2,16 +2,25 @@
   &__list {
     display: flex;
     width: 100%;
+    max-width: 760px;
     flex-flow: row wrap;
+    gap: 1em  4%;
+    margin: * auto 2em;
   }
 
   &__listItemName {
-    width: 50%;
+    width: 48%;
     margin: 0;
+    text-align: end;
   }
 
   &__listItemValue {
-    width: 50%;
+    width: 48%;
     margin: 0;
+  }
+
+  &__newGameBtn {
+    margin: * auto;
+    display: block;
   }
 } 

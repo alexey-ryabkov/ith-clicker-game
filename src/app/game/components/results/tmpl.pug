@@ -1,16 +1,18 @@
 include ../../../../components/table/tmpl
 - 
+  const { utils: { prettyDateTime }} = locals;
   const results = {
     "Очки": 100,
-    "Время игры": new Date(),
+    "Время игры": prettyDateTime(),
     "Время в игре": "02:10",
     "Сделано кликов": 78,
     "Поймано звезд": 15,
     "Упущено звезд": 7,
   };
 .gameResults
+  h1.page__title Результаты игры:
   dl.gameResults__list
     each value, param in results
       dt.gameResults__listItemName= param
       dd.gameResults__listItemValue= value
-  +button('Новая игра', ['gameResults__newGameBtn'])
+  +button('Новая игра', ['button_width_200', 'gameResults__newGameBtn'])

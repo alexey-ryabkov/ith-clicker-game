@@ -1,10 +1,10 @@
 include ../../../../components/tabs/tmpl
 include ../../../../components/button/tmpl
 .gameGreeting
-  .gameGreeting__welcome Добро пожаловать в игру
+  h1.page__title.gameGreeting__welcome Добро пожаловать в игру
     span.gameGreeting__welcomeUser
     span !
-  +button('Начать игру', ['gameGreeting__startBtn'])
+  +button('Начать игру [Enter]', ['button_width_250', 'gameGreeting__startBtn'])
   .gameGreeting__defineUser  
     - 
       const { renderTmpl } = locals;
@@ -19,4 +19,4 @@ include ../../../../components/button/tmpl
         label: "Выбрать другого игрока",
         content: chooseUser
       }
-    ])
+    ], ['tabs_centered'])

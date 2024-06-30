@@ -4,10 +4,10 @@ include ../../../../components/button/tmpl
 .gameGreeting__chooseUser
   - const users = ['user1', 'user2', 'user3'];
   if users.length
-    +formField('', null)
+    +formField('', null, 'radio')
       each user in users 
         +radio('users', user)
-    +button('Выбрать', ['gameGreeting__chooseUserBtn'])
+    +button('Выбрать', ['gameGreeting__chooseUserBtn'], 'secondary')
   else
     . 
       Вы пока единственный игрок

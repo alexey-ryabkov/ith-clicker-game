@@ -5,6 +5,8 @@
 @import "../../../../components/radio/styles.scss";
 
 .gameGreeting {
+  @include box-stack(1em, center);
+
   &__welcomeUser {
     &:not(:empty)::before {
       content: ', ';
@@ -13,5 +15,41 @@
 
   &__startBtn {
     display: none;
+  }
+
+  &__defineUser {
+    margin: 1em * *;
+    padding: 2em * *;
+    border-top: 1px solid var(--content-border-color, $grey-3);
+    width: 100%;
+  }
+
+  &__addUser {
+    padding: 2em * *;    
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    gap: .5em;
+  }
+
+  &__addUserField {
+    width: 300px;
+  }
+
+  &__addUserBtn {
+    font-size: 18px;
+    height: 58px;
+  }
+
+  &__chooseUser {
+    padding: 2em * *;
+    
+    @include box-stack(1.5em, center);
+  }
+
+  @media (max-width: 768px) {
+    &__addUserField {
+      width: 190px;
+    }
   }
 }

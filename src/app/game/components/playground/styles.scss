@@ -1,0 +1,45 @@
+.gamePlayground {
+  &__wrapper {    
+    max-width: 780px;
+    padding: 2em;
+    position: relative;
+    margin: 0 auto;
+  }
+
+  &__canvas {
+    width: 100%;
+    aspect-ratio: 4/3;
+  }
+
+  &__indicator {
+    position: absolute 1em * * *;
+
+    &_time {
+      left: 1em
+    } 
+
+    &_score {
+      right: 1em;
+    }  
+  }
+  
+  &__indicatorIcon {
+    line-height: normal;
+  }
+
+  &__indicatorValue {
+    display: inline-block;
+    margin-left: 5px;
+  }
+
+  &__finishBtn {
+    display: block;
+    margin: * auto;
+  }
+
+  @media (--layout-df-md) {
+    &__wrapper { 
+      padding: 1em;
+    }
+  }
+}

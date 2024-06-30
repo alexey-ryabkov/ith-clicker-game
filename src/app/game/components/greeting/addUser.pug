@@ -2,6 +2,6 @@ include ../../../../components/formField/tmpl
 include ../../../../components/textInput/tmpl
 include ../../../../components/button/tmpl
 .gameGreeting__addUser
-  +formField('', null)
-    +textInput('Введите имя пользователя', ['gameGreeting__addUserInput'])
-  +button('Создать', ['gameGreeting__addUserBtn'])
+  +formField('', null, '', ['gameGreeting__addUserField'], 'Не менее 5 символов: буквы, цифры, подчеркивание, дефис')
+    +textInput('Введите имя...', ['textInput_fullWidth', 'gameGreeting__addUserInput'])
+  +button('Создать', ['gameGreeting__addUserBtn'], 'secondary')

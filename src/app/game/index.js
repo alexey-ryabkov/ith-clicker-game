@@ -1,6 +1,7 @@
 import app from "@application";
-import playground from "@game/components/playground";
 import Game from "@game/Game";
+import playground from "@game/components/playground";
+import { keyboardController } from "@utils/keyboardController";
 import "@game/components/greeting";
 import "@game/components/results";
 
@@ -12,6 +13,8 @@ let greetingContainer;
 let playgroundContainer;
 /** @type HTMLElement|null **/
 let resultsContainer;
+/** @type {function} */
+let clearGameKeyboardHandlers;
 
 app.on("gameStarted", () => {
   game = new Game();
@@ -23,17 +26,20 @@ app.on("gameStarted", () => {
     playground.time = time;
   });
 
+  clearGameKeyboardHandlers = keyboardController({
+    Escape: () => app.finishGame(),
+    " ": () => (game.isPaused ? game.resume() : game.pause()),
+  });
+
   greetingContainer && (greetingContainer.style.display = "none");
   playgroundContainer && (playgroundContainer.style.display = "block");
   resultsContainer && (resultsContainer.style.display = "none");
 });
 app.on("gameFinished", () => {
-  // TODO
-  //    game.off
-
   game.finish();
-  // TODO
   app.regGameStat(game.stats);
+
+  clearGameKeyboardHandlers();
 
   playgroundContainer && (playgroundContainer.style.display = "none");
   resultsContainer && (resultsContainer.style.display = "block");
