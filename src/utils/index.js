@@ -4,16 +4,10 @@
  * @param {string} cls
  * @return
  */
-export function toggleClsInList(list, toggled, cls) {
+function toggleClsInList(list, toggled, cls) {
   list.forEach((item, num) => {
-    const isItemToggled = Number.isFinite(toggled)
-      ? num === toggled
-      : item === toggled;
-    if (!isItemToggled) {
-      item.classList.remove(cls);
-    } else {
-      item.classList.add(cls);
-    }
+    const flag = Number.isFinite(toggled) ? num === toggled : item === toggled;
+    item.classList.toggle(cls, flag);
   });
 }
 /**
@@ -24,7 +18,7 @@ export function toggleClsInList(list, toggled, cls) {
  * @param {NumeralItemVariants} variants
  * @return {string}
  */
-export function formatNumeralItem(number, variants) {
+function formatNumeralItem(number, variants) {
   let result = `${number} `;
   number %= 100;
   if (number >= 11 && number <= 19) {
@@ -49,7 +43,7 @@ export function formatNumeralItem(number, variants) {
  * @param {number} ms
  * @return {string}
  */
-export function formatTime(ms) {
+function formatTime(ms) {
   const SECONDS_IN_MINUTE = 60;
   const MS_IN_SECOND = 1000;
 
@@ -63,7 +57,7 @@ export function formatTime(ms) {
  * @param {unknown} value
  * @return {boolean}
  */
-export function isPlainObject(value) {
+function isPlainObject(value) {
   return (
     typeof value === "object" &&
     value !== null &&
@@ -71,3 +65,35 @@ export function isPlainObject(value) {
     Object.prototype.toString.call(value) === "[object Object]"
   );
 }
+/**
+ * @param {Date} [date]
+ * @returns string
+ */
+function prettyDateTime(date = new Date()) {
+  const formattedDate = date.toLocaleDateString("ru-RU", {
+    day: "numeric",
+    month: "long",
+    year: "numeric",
+  });
+  const formattedTime = date.toLocaleTimeString("ru-RU", {
+    hour: "2-digit",
+    minute: "2-digit",
+  });
+  return `${formattedTime}, ${formattedDate}`;
+}
+/**
+ * @param {HTMLInputElement} item
+ * @param {boolean} [flag]
+ */
+function toggleDisabled(item, flag) {
+  item.disabled = flag === undefined ? !item.disabled : flag;
+}
+
+module.exports = {
+  toggleClsInList,
+  formatNumeralItem,
+  isPlainObject,
+  formatTime,
+  prettyDateTime,
+  toggleDisabled,
+};

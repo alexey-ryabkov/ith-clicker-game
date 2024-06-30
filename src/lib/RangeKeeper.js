@@ -20,9 +20,14 @@ export default class RangeKeeper extends EventEmitter {
     super();
     if (edge2 !== undefined) {
       this._getWithinRange = createRangeKeeper(edge1, edge2);
-      this.value = value ?? edge1;
+      this._value = value ?? edge1;
+      this._leftEdge = edge1;
+      this._rightEdge = edge2;
     } else {
       this._getWithinRange = createRangeKeeper(0, edge1);
+      this._value = value ?? 0;
+      this._leftEdge = 0;
+      this._rightEdge = edge1;
     }
   }
 
@@ -36,5 +41,40 @@ export default class RangeKeeper extends EventEmitter {
       this._value = newVal;
       this.emit("changed", newVal);
     }
+  }
+
+  get leftEdge() {
+    return this._leftEdge;
+  }
+
+  get rightEdge() {
+    return this._rightEdge;
+  }
+
+  /**
+   * @param {number} [testValue]
+   * @returns {boolean}
+   */
+  isOnEdge(testValue) {
+    const value = testValue ?? this._value;
+    return this.isOnLeftEdge(value) || this.isOnRightEdge(value);
+  }
+
+  /**
+   * @param {number} [testValue]
+   * @returns {boolean}
+   */
+  isOnLeftEdge(testValue) {
+    const value = testValue ?? this._value;
+    return value === this._leftEdge;
+  }
+
+  /**
+   * @param {number} [testValue]
+   * @returns {boolean}
+   */
+  isOnRightEdge(testValue) {
+    const value = testValue ?? this._value;
+    return value === this._rightEdge;
   }
 }
