@@ -29,4 +29,10 @@
   &_fullWidth {
     width: 100%;
   }
+
+  @each $size in (250, 360) {
+    &_width_$size {
+      width: #{$size}px;
+    }
+  }
 }

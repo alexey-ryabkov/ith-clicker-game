@@ -1,13 +1,13 @@
 //- include ../svgIcon/tmpl
-mixin formField(label, fieldData, cls = [], note = '')
+mixin formField(label, fieldData, groupType = '', cls = [], note = '')
   - const { name = '', disabled = false} = fieldData ?? {};
   div(class=['formField', {'formField_disabled': disabled}, ...cls])
     if label
       label.formField__title(for=name)= label
-    .formField__field
+    div(class=['formField__field', (groupType ? `formField__field_${groupType}` : '')])
       block
       //- +svgIcon(['formField__icon', 'formField__icon_success'], 'warning')
-      //- +svgIcon(['formField__icon', 'formField__icon_error'], 'warning')
+      //- +svgIcon(['formField__icon', 'formField__icon_error'], 'warning')  
     .formField__status= note
   
   

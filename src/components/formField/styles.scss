@@ -6,7 +6,7 @@ $validity-status-colors: (
 .formField {
   font-size: 16px;
 
-  @include box-stack(.31em, flex-start);
+  @include box-stack(false, flex-start);
   
   &__title {
     display: inline-block;
@@ -24,8 +24,10 @@ $validity-status-colors: (
   &__field {
     position: relative;
 
-    &_fullWidth {
-      width: 100%;
+    &_radio {
+      display: flex;
+      flex-wrap: wrap;
+      gap: .7em 1em;
     }
   }
 
@@ -46,8 +48,8 @@ $validity-status-colors: (
   &__status {
     @include font(.75rem, 1.2, $font-weight-bolder);
 
-    &:empty {
-      display: node;
+    &:not(:empty) {
+      margin: .5em * *;
     }
   }
 

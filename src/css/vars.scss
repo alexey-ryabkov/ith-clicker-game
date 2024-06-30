@@ -3,10 +3,10 @@ $black: #06080d;
 $pink: #f784ad;
 $purple: #9102b5;
 $blue: #4263eb;
-$yellow: #fcd904;
 $cyan: #4bfcf2;
-$yellow-darker: darken($yellow, 15%);
-$cyan-darker: darken($cyan, 15%);
+$yellow: #fcd904;
+$cyan-darker: #4bfcf2;
+$yellow-darker: #fcd904;
 $blue-darker: darken($blue, 15%);
 $purple-darker: darken($purple, 15%);
 $blue-light: #a0b1f533;
@@ -26,8 +26,8 @@ $color-notify: $orange;
 $color-primary: $cyan;
 $color-secondary: $yellow;
 $color-alternate: $purple;
-$color-primary-active: $blue-darker;
-$color-secondary-active: $purple-darker;
+$color-primary-active: $cyan-darker;
+$color-secondary-active: $yellow-darker;
 
 $font-size-def: 16px;
 $font-weights: (

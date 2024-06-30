@@ -1,22 +1,22 @@
 .button {
-  height: 3em;
   line-height: normal;
-  padding: .94em .94em .88;
+  padding: 1em;
   box-sizing: border-box;
-  border-radius: .5em;
+  border-radius: 0.5em;
   text-align: center;
   border: 0;
   cursor: pointer;
-  transition: transform .2s linear;
-
-  @include font(16px, false, $font-weight-bolder, Roboto);
-
+  transition: transform 0.2s linear;
+  font-weight: $font-weight-bolder;
+  
+  /* @include font(16px, false, $font-weight-bolder); */
+  
   &:active {
     transform: translateY(1px);
   }
 
   &:disabled {
-    opacity: .5;
+    opacity: 0.5;
     pointer-events: none;
   }
 
@@ -33,7 +33,7 @@
   }
 
   &_var_primary {
-    color: $white $color-primary;
+    color: $black $color-primary;
 
     &:hover,
     &:active {
@@ -42,25 +42,25 @@
   }
 
   &_var_secondary {
-    color: $white $color-secondary;
-    
+    color: $black $color-secondary;
+
     &:hover,
     &:active {
-      color: $white $color-secondary-active;
+      background: $color-secondary-active;
     }
   }
 
   &_var_alternate {
     border: 1px solid var(--text-pale-color, $grey-3);
     color: var(--text-regular-color, $grey-4) transparent;
-    
+
     &:hover,
     &:active {
       border-color: var(--text-primary-color, $black);
       color: var(--text-contrast-color, $black);
     }
   }
-  @each $size in (150, 200) {
+  @each $size in (150, 200, 250) {
     &_width_$size {
       width: #{$size}px;
     }
